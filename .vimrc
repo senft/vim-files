@@ -1,7 +1,6 @@
 set nocompatible
 
 call pathogen#infect()
-call pathogen#helptags()
 
 syntax on
 filetype plugin on
@@ -94,14 +93,3 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
-
-
-set statusline=
-set statusline +=%<%F            			  " full path
-set statusline +=%m                			  " modified flag
-set statusline +=\ %y                		  " file type
-set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
-set statusline +=%{fugitive#statusline()}     " git branch
-set statusline+=%=      					  " left/right separator
-set statusline+=%c,     					  " cursor column
-set statusline+=%l/%L   					  " cursor line/total lines

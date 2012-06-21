@@ -13,9 +13,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/taglist"]
-	path = bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
 [submodule "bundle/autoclose"]
 	path = bundle/autoclose
 	url = https://github.com/Townk/vim-autoclose.git
@@ -31,3 +28,6 @@
 [submodule "bundle/UltiSnips"]
 	path = bundle/UltiSnips
 	url = https://github.com/vim-scripts/UltiSnips.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar

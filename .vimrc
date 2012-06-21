@@ -45,14 +45,8 @@ color badwolf
 " Press Space to toggle hilighting (after search)
 :nnoremap <Space> :set hlsearch!<CR>
 
-" Taglist
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Sort_Type = "name"
-let Tlist_WinWidth = 40
-let Tlist_Close_On_Select = 1
-let Tlist_Show_One_File = 1
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-nnoremap <silent> <F4> :TlistToggle<CR>
+" Tagbar
+nmap <F4> :TagbarToggle<CR>
 
 nnoremap <C-t> :CommandT<CR>
 

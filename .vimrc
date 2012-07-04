@@ -77,3 +77,30 @@ let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+
+" toggle relative number
+if exists('&relativenumber')
+  function! s:ToggleRelativeNumber()
+    if &relativenumber
+      set norelativenumber
+      let &number = b:togglernu_number
+    else
+      let b:togglernu_number = &number
+      set relativenumber
+    endif
+  endfunction
+  noremap <silent> <Leader>n :<C-U>call <SID>ToggleRelativeNumber()<CR>
+endif
+
+
+function! PreviewDown() 
+   if !&previewwindow 
+       silent! wincmd P 
+   endif 
+   if &previewwindow 
+       silent! wincmd J 
+       silent! wincmd p 
+   endif 
+endf 
+
+au BufWinEnter * call PreviewDown() 

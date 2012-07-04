@@ -10,4 +10,4 @@ set grepprg=grep\ -nH\ $*
 let g:Tex_DefaultTargetFormat = "pdf"
 let g:tex_flavor = "pdflatex"
 let g:Tex_Folding = 1
-let g:Tex_AutoFolding = 1
+let g:Tex_AutoFolding = 0

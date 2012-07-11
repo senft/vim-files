@@ -67,6 +67,11 @@ noremap <right> :bn!<CR>
 vmap Q gq
 nmap Q gqap
 
+" fugitive maps
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gd :Gdiff<CR>
+
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabMappingForward='<tab>'
 
@@ -93,14 +98,14 @@ if exists('&relativenumber')
 endif
 
 
-function! PreviewDown() 
-   if !&previewwindow 
-       silent! wincmd P 
-   endif 
-   if &previewwindow 
-       silent! wincmd J 
-       silent! wincmd p 
-   endif 
-endf 
-
-au BufWinEnter * call PreviewDown() 
+ function! PreviewDown() 
+    if !&previewwindow 
+        silent! wincmd P 
+    endif 
+    if &previewwindow 
+        silent! wincmd J 
+        silent! wincmd p 
+    endif 
+ endf 
+ 
+ au BufWinEnter * call PreviewDown() 

@@ -3,7 +3,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set nosmartindent
-set textwidth=80
+set textwidth=79
 set colorcolumn=80
 
 map <F5> :w<CR>:!chmod +x "%"<CR>:!./"%"<CR>

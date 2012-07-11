@@ -42,6 +42,8 @@ set mouse=a
 
 color badwolf
 
+let g:syntastic_disabled_filetypes = ['py']
+
 " Press Space to toggle hilighting (after search)
 :nnoremap <Space> :set hlsearch!<CR>
 

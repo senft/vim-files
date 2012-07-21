@@ -15,3 +15,6 @@ set spell
 set spelllang=de,en
 syntax spell notoplevel
 let g:tex_comment_nospell= 1
+
+let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+let g:Tex_GotoError = 0

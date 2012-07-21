@@ -61,6 +61,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
+" Folding
+nnoremap <space> za
+vnoremap <space> zf
+
 " Arrow keys for buffer movement
 noremap <left> :bp!<CR>
 noremap <right> :bn!<CR>
@@ -75,10 +79,12 @@ noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>
 
 let g:SuperTabClosePreviewOnPopupClose=1
-let g:SuperTabMappingForward='<tab>'
+let g:SuperTabMappingForward="<tab>"
+let g:SuperTabLongestHighlight=1
 
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<tab>"
 
 " Restore cursor position
 if has("autocmd")
@@ -99,15 +105,14 @@ if exists('&relativenumber')
   noremap <silent> <Leader>n :<C-U>call <SID>ToggleRelativeNumber()<CR>
 endif
 
+function! PreviewDown() 
+   if !&previewwindow 
+       silent! wincmd P 
+   endif 
+   if &previewwindow 
+       silent! wincmd J 
+       silent! wincmd p 
+   endif 
+endf 
 
- function! PreviewDown() 
-    if !&previewwindow 
-        silent! wincmd P 
-    endif 
-    if &previewwindow 
-        silent! wincmd J 
-        silent! wincmd p 
-    endif 
- endf 
- 
- au BufWinEnter * call PreviewDown() 
+au BufWinEnter * call PreviewDown() 

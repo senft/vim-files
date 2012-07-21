@@ -16,3 +16,8 @@ set completeopt=menuone,longest,preview
 
 set foldmethod=indent
 set foldlevel=99
+set foldnestmax=2
+
+let g:pymode_rope = 0
+"let g:pymode_rope_auto_project = 0
+"let g:pymode_rope_vim_completion = 0

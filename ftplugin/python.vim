@@ -11,8 +11,13 @@ map <F6> :w<CR>:!./.run <CR>
 
 " Completion
 set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType="context"
 set completeopt=menuone,longest,preview
 
 set foldmethod=indent
 set foldlevel=99
+
+" Python mode settings
+
+" Don't auto fix vim python paths if virtualenv enabled
+let g:pymode_virtualenv = 0

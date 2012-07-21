@@ -25,7 +25,7 @@ set laststatus=2
 set tabstop=4                   " a tab is 4 spaces
 set shiftwidth=4
 set softtabstop=4
-set expandtab
+set expandtab                   " replace tabs by spaces
 set smartindent
 
 "" Searching
@@ -55,11 +55,18 @@ nnoremap <C-t> :CommandT<CR>
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>
 
+" We have to remap vim-latex's mapping to <C-j> in order to use it...
+nnoremap <C-space> <Plug>IMAP_JumpForward
+
 " Move between windows with crtl+{hjkl}
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+
+"  Improve up/down movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
 
 " Arrow keys for buffer movement
 noremap <left> :bp!<CR>

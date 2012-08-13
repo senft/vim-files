@@ -76,6 +76,10 @@ nnoremap k gk
 noremap <left> :bp!<CR>
 noremap <right> :bn!<CR>
 
+" sv for vertical split, sh for horizontal
+nnoremap <silent> sv <C-w>v
+nnoremap <silent> sh :split<CR>
+
 "Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
@@ -92,6 +96,10 @@ let g:SuperTabLongestHighlight=1
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 let g:UltiSnipsJumpBackwardTrigger="<tab>"
+
+" Make CTRLP's starting directory the dir of current file
+let g:ctrlp_working_path_mode = 'c'
+
 
 " Restore cursor position
 if has("autocmd")

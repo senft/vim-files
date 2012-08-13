@@ -1,7 +1,12 @@
+" Very sluggish UI in latex mode
+set nocursorline
+
 filetype plugin indent on
 
 set formatoptions=tcq
 set textwidth=79
+
+let g:Imap_UsePlaceHolders = 0
 
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "pdflatex"

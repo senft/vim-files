@@ -42,7 +42,18 @@ set mouse=a
 
 color badwolf
 
-let g:syntastic_disabled_filetypes = ['py']
+"let g:syntastic_disabled_filetypes = ['py']
+let g:syntastic_enable_signs = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list =1
+
+let g:ropevim_enable_autoimport = 1
+let g:ropevim_autoimport_modules = ["os", "shutil", "sys"]
+let g:ropevim_enable_shorcuts = 1
+let g:ropevim_guess_project = 1
+
+nnoremap <C-S-o> :RopeAutoImport<CR>
+nnoremap <C-S-r> :RopeRename<CR>
 
 " Press Space to toggle hilighting (after search)
 :nnoremap <Space> :set hlsearch!<CR>
@@ -89,6 +100,7 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>
 
+:set completeopt=longest,menuone
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabMappingForward="<tab>"
 let g:SuperTabLongestHighlight=1

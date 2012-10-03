@@ -52,11 +52,9 @@ let g:syntastic_auto_loc_list = 0 " dont show a quickfix window when errors are 
 " Tagbar
 nmap <F4> :TagbarToggle<CR>
 
-nnoremap <C-t> :CommandT<CR>
-
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>
-
+"
 " We have to remap vim-latex's mapping to <C-j> in order to use it...
 nnoremap <C-space> <Plug>IMAP_JumpForward
 
@@ -67,9 +65,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
 " Folding
-nnoremap <space> za
-vnoremap <space> zf
-"
+nnoremap <Space> za
+"vnoremap <Space> zf
+
+
 "  Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -103,25 +102,24 @@ let g:UltiSnipsJumpBackwardTrigger="<tab>"
 " Make CTRLP's starting directory the dir of current file
 let g:ctrlp_working_path_mode = 'c'
 
-
 " Restore cursor position
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
-" toggle relative number
-if exists('&relativenumber')
-  function! s:ToggleRelativeNumber()
-    if &relativenumber
-      set norelativenumber
-      let &number = b:togglernu_number
-    else
-      let b:togglernu_number = &number
-      set relativenumber
-    endif
-  endfunction
-  noremap <silent> <Leader>n :<C-U>call <SID>ToggleRelativeNumber()<CR>
-endif
+"" toggle relative number
+"if exists('&relativenumber')
+"  function! s:ToggleRelativeNumber()
+"    if &relativenumber
+"      set norelativenumber
+"      let &number = b:togglernu_number
+"    else
+"      let b:togglernu_number = &number
+"      set relativenumber
+"    endif
+"  endfunction
+"  noremap <silent> <Leader>n :<C-U>call <SID>ToggleRelativeNumber()<CR>
+"endif
 
 function! PreviewDown() 
    if !&previewwindow 

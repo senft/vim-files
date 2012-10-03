@@ -25,7 +25,6 @@ set laststatus=2
 set tabstop=4                   " a tab is 4 spaces
 set shiftwidth=4
 set softtabstop=4
-set expandtab                   " replace tabs by spaces
 set smartindent
 
 "" Searching
@@ -45,15 +44,7 @@ color badwolf
 "let g:syntastic_disabled_filetypes = ['py']
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_auto_loc_list =1
-
-let g:ropevim_enable_autoimport = 1
-let g:ropevim_autoimport_modules = ["os", "shutil", "sys"]
-let g:ropevim_enable_shorcuts = 1
-let g:ropevim_guess_project = 1
-
-nnoremap <C-S-o> :RopeAutoImport<CR>
-nnoremap <C-S-r> :RopeRename<CR>
+let g:syntastic_auto_loc_list = 0 " dont show a quickfix window when errors are found
 
 " Press Space to toggle hilighting (after search)
 :nnoremap <Space> :set hlsearch!<CR>

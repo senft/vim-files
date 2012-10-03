@@ -10,18 +10,50 @@ map <F5> :w<CR>:!chmod +x "%"<CR>:!./"%"<CR>
 map <F6> :w<CR>:!./.run <CR>
 
 " Completion
-set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType="context"
-set completeopt=menuone,longest,preview
+"set omnifunc=pythoncomplete#Complete
+"let g:SuperTabDefaultCompletionType="context"
+"set completeopt=menuone,longest,preview
 
 set foldmethod=indent
 set foldlevel=99
 set foldnestmax=2
 
-" Python mode settings
+let ropevim_vim_completion=1
+let ropevim_extended_complete=1
 
-" Don't auto fix vim python paths if virtualenv enabled
-let g:pymode_virtualenv = 0
-let g:pymode_rope = 0
-"let g:pymode_rope_auto_project = 0
-"let g:pymode_rope_vim_completion = 0
+let g:ropevim_enable_autoimport = 1
+let g:ropevim_autoimport_modules = ["os", "shutil", "sys"]
+let g:ropevim_enable_shorcuts = 1
+let g:ropevim_guess_project = 1
+
+setlocal omnifunc=RopeCompleteFunc
+let g:SuperTabDefaultCompletionType="context"
+set completeopt=menuone,longest,preview
+set previewheight=10 " maximum height for preview window
+
+nnoremap <C-S-o> :RopeAutoImport<CR>
+nnoremap <C-S-r> :RopeRename<CR>
+"imap <C-Space> <C-R>=RopeCodeAssistInsertMode()<CR>
+"imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
+
+" Jump to first error when last is reached
+function! NextErrorWrap()
+	:let v:errmsg = ""
+	silent! lnext
+	:if v:errmsg != ""
+		:ll 1
+	:endif
+endfunction
+"
+" Jump to first error when last is reached
+function! PrevErrorWrap()
+	:let v:errmsg = ""
+	silent! lprev
+	:if v:errmsg != ""
+		:llast
+	:endif
+endfunction
+
+
+noremap <up> :call PrevErrorWrap()<CR>
+noremap <down> :call NextErrorWrap()<CR>

@@ -46,8 +46,8 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_loc_list = 0 " dont show a quickfix window when errors are found
 
-" Press Space to toggle hilighting (after search)
-:nnoremap <Space> :set hlsearch!<CR>
+" Disable search highlighting on <Return>
+nnoremap <CR> :noh<CR><CR> "
 
 " Tagbar
 nmap <F4> :TagbarToggle<CR>
@@ -66,10 +66,9 @@ nnoremap <C-h> <C-w>h
 
 " Folding
 nnoremap <Space> za
-"vnoremap <Space> zf
+vnoremap <Space> zf
 
-
-"  Improve up/down movement on wrapped lines
+" Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
 

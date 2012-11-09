@@ -6,7 +6,7 @@ set nosmartindent
 set textwidth=79
 set colorcolumn=80
 
-map <F5> :!python %<CR>
+map <F5> :w<CR>:!chmod +x "%"<CR>:!./"%"<CR>
 map <F6> :w<CR>:!./.run <CR>
 
 " Completion

@@ -54,8 +54,10 @@ let g:syntastic_loc_list_height = 4
 " Disable search highlighting on <Return>
 nnoremap <CR> :noh<CR><CR> "
 
-" Tagbar
 nmap <F4> :TagbarToggle<CR>
+nmap <F3> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
 
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>

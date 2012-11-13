@@ -54,3 +54,11 @@
 	path = bundle/AutoComplPop
 	url = https://github.com/vim-scripts/AutoComplPop.git
 	ignore = dirty
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+	ignore = dirty
+[submodule "bundle/vim-signature"]
+	path = bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature
+	ignore = dirty

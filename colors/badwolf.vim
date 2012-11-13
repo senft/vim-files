@@ -300,7 +300,7 @@ call s:HL('DiffText',   'snow', 'deepergravel', 'bold')
 
 if has("spell")
     call s:HL('SpellCap', 'dalespale', 'bg', 'undercurl,bold', 'dalespale')
-    call s:HL('SpellBad', '', '', 'undercurl', 'dalespale')
+    call s:HL('SpellBad', '', 'bg', 'undercurl', 'dalespale')
     call s:HL('SpellLocal', '', '', 'undercurl', 'dalespale')
     call s:HL('SpellRare', '', '', 'undercurl', 'dalespale')
 endif
@@ -474,6 +474,33 @@ call s:HL('javaScopeDecl', 'taffy', '', 'bold')
 call s:HL('javaCommentTitle', 'gravel', '')
 call s:HL('javaDocTags', 'snow', '', 'none')
 call s:HL('javaDocParam', 'dalespale', '', '')
+
+" }}}
+" LaTeX {{{
+
+call s:HL('texStatement', 'tardis', '', 'none')
+call s:HL('texMathZoneX', 'orange', '', 'none')
+call s:HL('texMathZoneA', 'orange', '', 'none')
+call s:HL('texMathZoneB', 'orange', '', 'none')
+call s:HL('texMathZoneC', 'orange', '', 'none')
+call s:HL('texMathZoneD', 'orange', '', 'none')
+call s:HL('texMathZoneE', 'orange', '', 'none')
+call s:HL('texMathZoneV', 'orange', '', 'none')
+call s:HL('texMathZoneX', 'orange', '', 'none')
+call s:HL('texMath', 'orange', '', 'none')
+call s:HL('texMathMatcher', 'orange', '', 'none')
+call s:HL('texRefLabel', 'dirtyblonde', '', 'none')
+call s:HL('texRefZone', 'lime', '', 'none')
+call s:HL('texComment', 'darkroast', '', 'none')
+call s:HL('texDelimiter', 'orange', '', 'none')
+call s:HL('texZone', 'brightgravel', '', 'none')
+
+augroup badwolf_tex
+    au!
+
+    au BufRead,BufNewFile *.tex syn region texMathZoneV start="\\(" end="\\)\|%stopzone\>" keepend contains=@texMathZoneGroup
+    au BufRead,BufNewFile *.tex syn region texMathZoneX start="\$" skip="\\\\\|\\\$" end="\$\|%stopzone\>" keepend contains=@texMathZoneGroup
+augroup END
 
 " }}}
 " LessCSS {{{

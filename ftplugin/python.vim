@@ -9,51 +9,23 @@ set colorcolumn=80
 map <F5> :!python %<CR>
 map <F6> :w<CR>:!./.run <CR>
 
-" Completion
-"set omnifunc=pythoncomplete#Complete
-"let g:SuperTabDefaultCompletionType="context"
-"set completeopt=menuone,longest,preview
-
 set foldmethod=indent
 set foldlevel=99
 set foldnestmax=2
 
-let ropevim_vim_completion=1
-let ropevim_extended_complete=1
-
+" let ropevim_vim_completion=1
+" let ropevim_extended_complete=1
 let g:ropevim_enable_autoimport = 1
 let g:ropevim_autoimport_modules = ["os", "shutil", "sys", "random"]
 let g:ropevim_enable_shorcuts = 1
 let g:ropevim_guess_project = 1
 
-setlocal omnifunc=RopeCompleteFunc
+" Completion
+setlocal omnifunc=RopeCompleteFunc				" Inlcude rope completion in SuperTab
 let g:SuperTabDefaultCompletionType="context"
 set completeopt=menuone,longest,preview
-set previewheight=10 " maximum height for preview window
+set previewheight=10							" maximum height for preview window
 
 nnoremap <C-o> :RopeAutoImport<CR>
 nnoremap <C-n> :RopeRename<CR>
-"imap <C-Space> <C-R>=RopeCodeAssistInsertMode()<CR>
-"imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
 
-" Jump to first error when last is reached
-function! NextErrorWrap()
-	:let v:errmsg = ""
-	silent! lnext
-	:if v:errmsg != ""
-		:ll 1
-	:endif
-endfunction
-"
-" Jump to first error when last is reached
-function! PrevErrorWrap()
-	:let v:errmsg = ""
-	silent! lprev
-	:if v:errmsg != ""
-		:llast
-	:endif
-endfunction
-
-
-noremap <up> :call PrevErrorWrap()<CR>
-noremap <down> :call NextErrorWrap()<CR>

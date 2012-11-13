@@ -39,12 +39,17 @@ set guioptions-=e               " remove tabbar
 set guifont=Envy\ Code\ R\ 10
 set mouse=a
 
+set undofile
+set undodir=~/.vimundo
+
+
 color badwolf
 
 "let g:syntastic_disabled_filetypes = ['py']
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_auto_loc_list = 0 " dont show a quickfix window when errors are found
+" let g:syntastic_auto_loc_list = 1 " dont show a quickfix window when errors are found
+let g:syntastic_loc_list_height = 4
 
 " Disable search highlighting on <Return>
 nnoremap <CR> :noh<CR><CR> "
@@ -65,8 +70,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
 " Folding
-nnoremap <Space> za
-vnoremap <Space> zf
+nnoremap <space> za
+vnoremap <space> zf
 
 " Improve up/down movement on wrapped lines
 nnoremap j gj
@@ -75,6 +80,10 @@ nnoremap k gk
 " Arrow keys for buffer movement
 noremap <left> :bp!<CR>
 noremap <right> :bn!<CR>
+
+" Reselect visual block after indent
+vnoremap < <gv
+vnoremap > >gv
 
 " sv for vertical split, sh for horizontal
 nnoremap <silent> sv <C-w>v
@@ -106,20 +115,6 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
-"" toggle relative number
-"if exists('&relativenumber')
-"  function! s:ToggleRelativeNumber()
-"    if &relativenumber
-"      set norelativenumber
-"      let &number = b:togglernu_number
-"    else
-"      let b:togglernu_number = &number
-"      set relativenumber
-"    endif
-"  endfunction
-"  noremap <silent> <Leader>n :<C-U>call <SID>ToggleRelativeNumber()<CR>
-"endif
-
 function! PreviewDown() 
    if !&previewwindow 
        silent! wincmd P 
@@ -131,3 +126,22 @@ function! PreviewDown()
 endf 
 
 au BufWinEnter * call PreviewDown() 
+
+function! NextErrorWrap()
+	:let v:errmsg = ""
+	silent! lnext
+	:if v:errmsg != ""
+		:ll 1		" Jump to first error when last is reached
+	:endif
+endfunction
+
+function! PrevErrorWrap()
+	:let v:errmsg = ""
+	silent! lprev
+	:if v:errmsg != ""
+		:llast		" Jump to last error when first is reached
+	:endif
+endfunction
+
+noremap <up> :call PrevErrorWrap()<CR>
+noremap <down> :call NextErrorWrap()<CR>

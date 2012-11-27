@@ -37,18 +37,16 @@ set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
 set guifont=Envy\ Code\ R\ 10
-set mouse=a
+set mouse=nicr					" set cursor to mouse click position but dont enter
+								" visual mode
 
 set undofile
 set undodir=~/.vimundo
 
-
 color badwolf
 
-"let g:syntastic_disabled_filetypes = ['py']
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 1
-" let g:syntastic_auto_loc_list = 1 " dont show a quickfix window when errors are found
 let g:syntastic_loc_list_height = 4
 
 " Disable search highlighting on <Return>

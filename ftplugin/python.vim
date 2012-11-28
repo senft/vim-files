@@ -29,3 +29,4 @@ set previewheight=10							" maximum height for preview window
 nnoremap <C-o> :RopeAutoImport<CR>
 nnoremap <C-n> :RopeRename<CR>
 
+imap <buffer> . .<Tab>

@@ -42,7 +42,6 @@ set mouse=a
 set undofile
 set undodir=~/.vimundo
 
-
 color badwolf
 
 "let g:syntastic_disabled_filetypes = ['py']
@@ -102,7 +101,6 @@ noremap <Leader>gd :Gdiff<CR>
 
 :set completeopt=longest,menuone
 let g:SuperTabClosePreviewOnPopupClose=1
-let g:SuperTabMappingForward="<tab>"
 let g:SuperTabLongestHighlight=1
 
 let g:UltiSnipsExpandTrigger="<s-tab>"
@@ -110,7 +108,8 @@ let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 let g:UltiSnipsJumpBackwardTrigger="<tab>"
 
 " Make CTRLP's starting directory the dir of current file
-let g:ctrlp_working_path_mode = 'c'
+" let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_clear_cache_on_exit = 0
 
 " Restore cursor position
 if has("autocmd")

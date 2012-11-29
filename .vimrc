@@ -39,9 +39,10 @@ set guioptions-=e               " remove tabbar
 set guifont=Envy\ Code\ R\ 10
 set mouse=nicr					" set cursor to mouse click position but dont enter
 								" visual mode
-
 set undofile
 set undodir=~/.vimundo
+
+set wildignore+=*.mp3,*.MP3,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
 
 color badwolf
 

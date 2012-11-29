@@ -50,10 +50,6 @@
 	path = bundle/rope-omni
 	url = https://github.com/rygwdn/rope-omni.git
 	ignore = dirty
-[submodule "bundle/AutoComplPop"]
-	path = bundle/AutoComplPop
-	url = https://github.com/vim-scripts/AutoComplPop.git
-	ignore = dirty
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree

@@ -25,6 +25,9 @@ setlocal omnifunc=RopeCompleteFunc				" Inlcude rope completion in SuperTab
 let g:SuperTabDefaultCompletionType="context"
 set completeopt=menuone,longest,preview
 set previewheight=15							" maximum height for preview window
+set foldmethod=indent
+"set foldlevel=99
+set foldnestmax=2
 
 nnoremap <C-o> :RopeAutoImport<CR>
 nnoremap <C-n> :RopeRename<CR>

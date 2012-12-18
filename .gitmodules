@@ -46,10 +46,6 @@
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
 	ignore = dirty
-[submodule "bundle/rope-omni"]
-	path = bundle/rope-omni
-	url = https://github.com/rygwdn/rope-omni.git
-	ignore = dirty
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree

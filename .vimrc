@@ -1,6 +1,10 @@
 set nocompatible
 
+let g:pathogen_disabled = ['jedi-vim']
+
+filetype off
 call pathogen#infect()
+call pathogen#helptags()
 
 syntax on
 filetype plugin on
@@ -46,6 +50,7 @@ set wildignore+=*.mp3,*.MP3,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jp
 
 color badwolf
 
+let g:syntastic_disabled_filetypes = ['python']
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_loc_list_height = 4
@@ -128,21 +133,21 @@ endf
 
 au BufWinEnter * call PreviewDown() 
 
-function! NextErrorWrap()
-	:let v:errmsg = ""
-	silent! lnext
-	:if v:errmsg != ""
-		:ll 1		" Jump to first error when last is reached
-	:endif
-endfunction
-
-function! PrevErrorWrap()
-	:let v:errmsg = ""
-	silent! lprev
-	:if v:errmsg != ""
-		:llast		" Jump to last error when first is reached
-	:endif
-endfunction
-
-noremap <up> :call PrevErrorWrap()<CR>
-noremap <down> :call NextErrorWrap()<CR>
+"function! NextErrorWrap()
+"	:let v:errmsg = ""
+"	silent! lnext
+"	:if v:errmsg != ""
+"		:ll 1		" Jump to first error when last is reached
+"	:endif
+"endfunction
+"
+"function! PrevErrorWrap()
+"	:let v:errmsg = ""
+"	silent! lprev
+"	:if v:errmsg != ""
+"		:llast		" Jump to last error when first is reached
+"	:endif
+"endfunction
+"
+"noremap <up> :call PrevErrorWrap()<CR>
+"noremap <down> :call NextErrorWrap()<CR>

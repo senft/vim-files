@@ -54,3 +54,6 @@
 	path = bundle/vim-signature
 	url = https://github.com/kshenoy/vim-signature
 	ignore = dirty
+[submodule "bundle/badwolf"]
+	path = bundle/badwolf
+	url = git@github.com:senft/badwolf.git

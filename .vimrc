@@ -50,6 +50,9 @@ set wildignore+=*.mp3,*.MP3,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jp
 
 color badwolf
 
+" use :W to force saving a file
+com! W :w !sudo tee %
+
 let g:syntastic_disabled_filetypes = ['python']
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 1
@@ -65,7 +68,7 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
 
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>
-"
+
 " We have to remap vim-latex's mapping to <C-j> in order to use it...
 nnoremap <C-space> <Plug>IMAP_JumpForward
 

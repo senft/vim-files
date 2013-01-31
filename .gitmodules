@@ -56,4 +56,5 @@
 	ignore = dirty
 [submodule "bundle/badwolf"]
 	path = bundle/badwolf
-	url = git@github.com:senft/badwolf.git
+	#url = git@github.com:senft/badwolf.git
+	url = https://github.com/senft/badwolf

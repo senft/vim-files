@@ -141,21 +141,21 @@ endf
 
 au BufWinEnter * call PreviewDown() 
 
-"function! NextErrorWrap()
-"	:let v:errmsg = ""
-"	silent! lnext
-"	:if v:errmsg != ""
-"		:ll 1		" Jump to first error when last is reached
-"	:endif
-"endfunction
-"
-"function! PrevErrorWrap()
-"	:let v:errmsg = ""
-"	silent! lprev
-"	:if v:errmsg != ""
-"		:llast		" Jump to last error when first is reached
-"	:endif
-"endfunction
-"
-"noremap <up> :call PrevErrorWrap()<CR>
-"noremap <down> :call NextErrorWrap()<CR>
+function! NextErrorWrap()
+	:let v:errmsg = ""
+	silent! lnext
+	:if v:errmsg != ""
+		:ll 1		" Jump to first error when last is reached
+	:endif
+endfunction
+
+function! PrevErrorWrap()
+	:let v:errmsg = ""
+	silent! lprev
+	:if v:errmsg != ""
+		:llast		" Jump to last error when first is reached
+	:endif
+endfunction
+
+noremap <up> :call PrevErrorWrap()<CR>
+noremap <down> :call NextErrorWrap()<CR>

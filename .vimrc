@@ -106,15 +106,14 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>
 
-
 set completeopt=menu,longest,preview
 set previewheight=20							" maximum height for preview window
 
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 
-" let g:UltiSnipsExpandTrigger="<s-tab>"
-" let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 " let g:UltiSnipsJumpBackwardTrigger="<tab>"
 
 " Make CTRLP's starting directory the dir of current file

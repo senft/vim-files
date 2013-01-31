@@ -9,26 +9,20 @@ set colorcolumn=80
 map <F5> :w<CR>:!chmod +x "%"<CR>:!./"%"<CR>
 map <F6> :w<CR>:!./.run <CR>
 
-let g:pymode_rope_goto_def_newwin = "new"
-let g:pymode_folding = 1
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_checker = 'pyflakes,pep8'
 let g:ropevim_enable_autoimport = 0
 let g:pymode_rope_auto_project = 1
-" let g:ropevim_guess_project = 1
-"
-" Hold cursor in current window
-" when quickfix is open
-let g:pymode_lint_hold = 0
+let g:ropevim_guess_project = 1
 
 " Completion
 let g:SuperTabDefaultCompletionType="context"
 set completeopt=menuone,longest,preview
 set previewheight=20							" maximum height for preview window
 
-
 "set foldmethod=indent
 ""set foldlevel=99
 "set foldnestmax=2
-
 
 nnoremap <leader>n :RopeRename<CR>
 nnoremap <leader>g :RopeGotoDefinition<CR>

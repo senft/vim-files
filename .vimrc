@@ -50,7 +50,6 @@ set wildignore+=*.mp3,*.MP3,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jp
 let g:badwolf_darkgutter = 1
 color badwolf
 
-let g:syntastic_disabled_filetypes = ['python']
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 4

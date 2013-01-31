@@ -9,21 +9,17 @@ set colorcolumn=80
 map <F5> :w<CR>:!chmod +x "%"<CR>:!./"%"<CR>
 map <F6> :w<CR>:!./.run <CR>
 
+let g:syntastic_python_checker = 'flake8'
+
 let g:pymode_lint = 0
-let g:pymode_lint_cwindow = 0
-let g:pymode_lint_checker = 'pep8,pylint'
 let g:ropevim_enable_autoimport = 0
 let g:pymode_rope_auto_project = 1
-" let g:ropevim_guess_project = 1
+let g:ropevim_guess_project = 0
 
 " Completion
 let g:SuperTabDefaultCompletionType="context"
 set completeopt=menuone,longest,preview
 set previewheight=20							" maximum height for preview window
-
-"set foldmethod=indent
-""set foldlevel=99
-"set foldnestmax=2
 
 nnoremap <leader>n :RopeRename<CR>
 nnoremap <leader>g :RopeGotoDefinition<CR>

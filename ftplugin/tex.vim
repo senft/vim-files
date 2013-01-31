@@ -1,10 +1,6 @@
 " Very sluggish UI in latex mode
 set nocursorline
 
-filetype plugin indent on
-
-set nocursorline
-
 set formatoptions=tcq
 set textwidth=79
 

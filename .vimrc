@@ -57,7 +57,7 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 4
 
-" let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 
 " Disable search highlighting on <Return>
 nnoremap <CR> :noh<CR><CR> "

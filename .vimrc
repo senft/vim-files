@@ -44,7 +44,7 @@ set mouse=nicr					" set cursor to mouse click position but dont enter
 set undofile
 set undodir=~/.vimundo
 
-set wildignore+=*.mp3,*.MP3,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
+set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
 
 " Make the gutters darker than the background.
 let g:badwolf_darkgutter = 1

@@ -58,3 +58,6 @@
 	path = bundle/badwolf
 	#url = git@github.com:senft/badwolf.git
 	url = https://github.com/senft/badwolf
+[submodule "bundle/clang_complete"]
+	path = bundle/clang_complete
+	url = https://github.com/Rip-Rip/clang_complete.git

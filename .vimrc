@@ -1,72 +1,98 @@
 set nocompatible
+set encoding=utf-8
 
+" ----------------------------------------------------------------------------
+" Pathogen
+" ----------------------------------------------------------------------------
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
-syntax on
-filetype plugin on
-filetype plugin indent on
-set encoding=utf-8
-
-"" Backups
-set nobackup                    " do not keep a backup file, use versions instead
-set nowritebackup
-set noswapfile                  " (additionally disable swap files)
-
-set ruler                       " show the cursor position all the time
-set showcmd                     " display incomplete commands
-set number                      " display line numbers
-set showmode
-
-set modeline                    " use vim-directives in files
-set cursorline
-
-set laststatus=2
-
-set tabstop=4                   " a tab is 4 spaces
-set shiftwidth=4
-set softtabstop=4
-set smartindent
-
-"" Searching
+" ----------------------------------------------------------------------------
+" moving around, searching and patterns
+" ----------------------------------------------------------------------------
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-set guioptions-=T               " remove toolbar
-set guioptions-=r               " remove right-hand scroll-bar
-set guioptions-=e               " remove tabbar
-set guifont=Envy\ Code\ R\ 10
-set mouse=nicr					" set cursor to mouse click position but dont enter
-								" visual mode
-set undofile
-set undodir=~/.vimundo
+" ----------------------------------------------------------------------------
+" displaying text
+" ----------------------------------------------------------------------------
+set number                      " display line numbers
 
-set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
+" ----------------------------------------------------------------------------
+" syntax, highlighting and spelling
+" ----------------------------------------------------------------------------
+syntax on
+filetype plugin on
+filetype plugin indent on
+
+set cursorline					" highlight the screen line of the cursor
 
 " Make the gutters darker than the background.
 let g:badwolf_darkgutter = 1
 color badwolf
 
-" use :W to force saving a file
-com! W :w !sudo tee %
+" ----------------------------------------------------------------------------
+" multiple windows
+" ----------------------------------------------------------------------------
+set laststatus=2				" always display statusbar
+set previewheight=20			" maximum height for preview window
 
-let g:syntastic_enable_signs = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_loc_list_height = 4
+" ----------------------------------------------------------------------------
+" terminal
+" ----------------------------------------------------------------------------
+set ttyfast
 
-let g:Powerline_symbols = 'fancy'
+" ----------------------------------------------------------------------------
+" using the mouse
+" ----------------------------------------------------------------------------
+set mouse=nicr					" mouse click does not enter visual mode
 
-" Disable search highlighting on <Return>
-nnoremap <CR> :noh<CR><CR> "
+" ----------------------------------------------------------------------------
+" GUI
+" ----------------------------------------------------------------------------
+set guioptions-=T               " remove toolbar
+set guioptions-=r               " remove right-hand scroll-bar
+set guioptions-=e               " remove tabbar
+set guifont=Envy\ Code\ R\ 10
 
-nmap <F4> :TagbarToggle<CR>
-nmap <F3> :NERDTreeToggle<CR>
-let NERDTreeQuitOnOpen = 1
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
+" ----------------------------------------------------------------------------
+" printing
+" ----------------------------------------------------------------------------
 
+" ----------------------------------------------------------------------------
+" messages and info
+" ----------------------------------------------------------------------------
+set ruler                       " show the cursor position all the time
+set showcmd                     " display incomplete commands
+set showmode
+
+" ----------------------------------------------------------------------------
+" selecting text
+" ----------------------------------------------------------------------------
+
+" ----------------------------------------------------------------------------
+" editing text
+" ----------------------------------------------------------------------------
+set completeopt=menu,longest,preview
+
+" ----------------------------------------------------------------------------
+" tabs and indenting
+" ----------------------------------------------------------------------------
+set tabstop=4                   " a tab is 4 spaces
+set shiftwidth=4
+set softtabstop=4
+set smartindent
+
+" ----------------------------------------------------------------------------
+" folding
+" ----------------------------------------------------------------------------
+
+" ----------------------------------------------------------------------------
+" mapping
+" ----------------------------------------------------------------------------
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>
 
@@ -108,37 +134,37 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>
 
-set completeopt=menu,longest,preview
-set previewheight=20							" maximum height for preview window
+" Disable search highlighting on <Return>
+nnoremap <CR> :noh<CR><CR> "
 
-let g:SuperTabClosePreviewOnPopupClose=1
-let g:SuperTabLongestHighlight=1
+nmap <F4> :TagbarToggle<CR>
+nmap <F3> :NERDTreeToggle<CR>
 
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<tab>"
+noremap <up> :call PrevErrorWrap()<CR>
+noremap <down> :call NextErrorWrap()<CR>
 
-" Make CTRLP's starting directory the dir of current file
-" let g:ctrlp_working_path_mode = 'c'
-let g:ctrlp_clear_cache_on_exit = 0
+" ----------------------------------------------------------------------------
+" reading and writing files
+" ----------------------------------------------------------------------------
+set nobackup                    " do not keep a backup file, use versions instead
+set nowritebackup
+set modeline                    " use vim-directives in files
 
-" Restore cursor position
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-endif
+" ----------------------------------------------------------------------------
+" the swap file
+" ----------------------------------------------------------------------------
+set noswapfile                  " disable swap file
 
-function! PreviewDown() 
-   if !&previewwindow 
-       silent! wincmd P 
-   endif 
-   if &previewwindow 
-       silent! wincmd J 
-       silent! wincmd p 
-   endif 
-endf 
+" ----------------------------------------------------------------------------
+" command line editing
+" ----------------------------------------------------------------------------
+set undofile
+set undodir=~/.vimundo
+set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
 
-au BufWinEnter * call PreviewDown() 
-
+" ----------------------------------------------------------------------------
+" running make and jumping to errors
+" ----------------------------------------------------------------------------
 function! NextErrorWrap()
 	:let v:errmsg = ""
 	silent! lnext
@@ -155,5 +181,54 @@ function! PrevErrorWrap()
 	:endif
 endfunction
 
-noremap <up> :call PrevErrorWrap()<CR>
-noremap <down> :call NextErrorWrap()<CR>
+" ----------------------------------------------------------------------------
+" Plugin settings
+" ----------------------------------------------------------------------------
+
+" Syntastic
+let g:syntastic_enable_signs = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_loc_list_height = 4
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
+
+" NERDTree
+let NERDTreeQuitOnOpen = 1
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
+
+" Supertab
+let g:SuperTabClosePreviewOnPopupClose=1
+let g:SuperTabLongestHighlight=1
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<tab>"
+
+" CtrlP
+let g:ctrlp_clear_cache_on_exit = 0
+" let g:ctrlp_working_path_mode = 'c' " Make CTRLP's starting directory the dir of current file
+
+" ----------------------------------------------------------------------------
+" Misc
+" ----------------------------------------------------------------------------
+com! W :w !sudo tee %			" use :W to force saving a file
+
+" Restore cursor position
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Display preview at bottom
+function! PreviewDown() 
+   if !&previewwindow 
+       silent! wincmd P 
+   endif 
+   if &previewwindow 
+       silent! wincmd J 
+       silent! wincmd p 
+   endif 
+endf 
+au BufWinEnter * call PreviewDown() 
+
+

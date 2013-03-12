@@ -32,7 +32,7 @@ set cursorline					" highlight the screen line of the cursor
 
 " Make the gutters darker than the background.
 let g:badwolf_darkgutter = 1
-color badwolf
+color molokai
 
 " ----------------------------------------------------------------------------
 " multiple windows
@@ -129,6 +129,9 @@ nnoremap <silent> sh :split<CR>
 vmap Q gq
 nmap Q gqap
 
+" Make Y consistent with C and D.  See :help Y.
+nnoremap Y y$
+
 " fugitive maps
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
@@ -210,6 +213,9 @@ let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 " CtrlP
 let g:ctrlp_clear_cache_on_exit = 0
 " let g:ctrlp_working_path_mode = 'c' " Make CTRLP's starting directory the dir of current file
+
+highlight clear SignColumn
+let g:gitgutter_enabled = 1
 
 " ----------------------------------------------------------------------------
 " Misc

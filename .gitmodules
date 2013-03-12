@@ -50,14 +50,12 @@
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
 	ignore = dirty
-[submodule "bundle/vim-signature"]
-	path = bundle/vim-signature
-	url = https://github.com/kshenoy/vim-signature
-	ignore = dirty
 [submodule "bundle/badwolf"]
 	path = bundle/badwolf
-	#url = git@github.com:senft/badwolf.git
 	url = https://github.com/senft/badwolf
 [submodule "bundle/clang_complete"]
 	path = bundle/clang_complete
 	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = https://github.com/tomasr/molokai.git

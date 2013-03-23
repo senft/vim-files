@@ -193,6 +193,7 @@ let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
 " Syntastic
+let g:syntastic_disabled_filetypes = ['cpp']
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 4

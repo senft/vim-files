@@ -146,6 +146,9 @@ nmap <F3> :NERDTreeToggle<CR>
 noremap <up> :call PrevErrorWrap()<CR>
 noremap <down> :call NextErrorWrap()<CR>
 
+nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
+nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>]
+
 " ----------------------------------------------------------------------------
 " reading and writing files
 " ----------------------------------------------------------------------------
@@ -210,14 +213,10 @@ let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 " CtrlP
 let g:ctrlp_clear_cache_on_exit = 0
-" let g:ctrlp_working_path_mode = 'c' " Make CTRLP's starting directory the dir of current file
 
 highlight clear SignColumn
 let g:gitgutter_enabled = 1

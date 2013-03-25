@@ -213,7 +213,8 @@ let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 
 " UltiSnips
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 
 " CtrlP
 let g:ctrlp_clear_cache_on_exit = 0

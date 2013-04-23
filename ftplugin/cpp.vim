@@ -2,6 +2,9 @@ set makeprg=g++\ %
 
 map <Leader>g <C-]>
 
+let g:tagbar_autoclose = 0
+let g:tagbar_autofocus = 0
+
 let g:clang_use_library = 1
 let g:clang_close_preview = 1
 let g:clang_auto_select = 1

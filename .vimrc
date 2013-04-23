@@ -89,21 +89,28 @@ set smartindent
 " ----------------------------------------------------------------------------
 " folding
 " ----------------------------------------------------------------------------
+set nofoldenable				" disable folding
 
 " ----------------------------------------------------------------------------
 " mapping
 " ----------------------------------------------------------------------------
+let mapleader = ","
+
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>
 
 " We have to remap vim-latex's mapping to <C-j> in order to use it...
 nnoremap <C-space> <Plug>IMAP_JumpForward
 
-" Move between windows with crtl+{hjkl}
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
+" Move between windows with CRTL+{hjkl}
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
+
+" Buffer movement
+noremap <C-j> :bp!<CR>
+noremap <C-k> :bn!<CR>
 
 " Folding
 nnoremap <space> za
@@ -112,10 +119,6 @@ vnoremap <space> zf
 " Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
-
-" Arrow keys for buffer movement
-noremap <left> :bp!<CR>
-noremap <right> :bn!<CR>
 
 " Reselect visual block after indent
 vnoremap < <gv
@@ -138,13 +141,13 @@ noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>
 
 " Disable search highlighting on <Return>
-nnoremap <CR> :noh<CR><CR> "
+nnoremap <CR> :noh<CR>
 
 nmap <F4> :TagbarToggle<CR>
 nmap <F3> :NERDTreeToggle<CR>
 
-noremap <up> :call PrevErrorWrap()<CR>
-noremap <down> :call NextErrorWrap()<CR>
+" Ack for the word under cursor
+nmap <Leader>a :Ack <C-r><C-w><CR>
 
 nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
 nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>]
@@ -167,25 +170,6 @@ set noswapfile                  " disable swap file
 set undofile
 set undodir=~/.vimundo
 set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
-
-" ----------------------------------------------------------------------------
-" running make and jumping to errors
-" ----------------------------------------------------------------------------
-function! NextErrorWrap()
-	:let v:errmsg = ""
-	silent! lnext
-	:if v:errmsg != ""
-		:ll 1		" Jump to first error when last is reached
-	:endif
-endfunction
-
-function! PrevErrorWrap()
-	:let v:errmsg = ""
-	silent! lprev
-	:if v:errmsg != ""
-		:llast		" Jump to last error when first is reached
-	:endif
-endfunction
 
 " ----------------------------------------------------------------------------
 " Plugin settings

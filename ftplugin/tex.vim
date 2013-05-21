@@ -9,7 +9,7 @@ let g:Imap_UsePlaceHolders = 0
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "pdflatex"
 let g:Tex_DefaultTargetFormat = "pdf"
-let g:Tex_ViewRule_pdf="evince"
+let g:Tex_ViewRule_pdf="zathura"
 let g:Tex_AutoFolding = 0
 
 let g:Tex_SmartKeyQuote=1

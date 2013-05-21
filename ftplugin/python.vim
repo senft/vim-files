@@ -22,5 +22,5 @@ set completeopt=menuone,longest,preview
 set previewheight=20							" maximum height for preview window
 
 nnoremap <leader>n :RopeRename<CR>
-nnoremap <leader>g :RopeGotoDefinition<CR>
-nnoremap <leader>d :RopeShowDoc<CR>
+nnoremap <leader>d :RopeGotoDefinition<CR>
+nnoremap <leader>h :RopeShowDoc<CR>

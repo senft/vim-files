@@ -30,8 +30,6 @@ filetype plugin indent on
 
 set cursorline					" highlight the screen line of the cursor
 
-" Make the gutters darker than the background.
-let g:badwolf_darkgutter = 1
 color molokai
 
 " ----------------------------------------------------------------------------
@@ -68,6 +66,8 @@ set guifont=Envy\ Code\ R\ 10
 set ruler                       " show the cursor position all the time
 set showcmd                     " display incomplete commands
 set showmode
+
+ set pumheight=20               " Limit popup menu height
 
 " ----------------------------------------------------------------------------
 " selecting text
@@ -141,14 +141,11 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>
 
-" Disable search highlighting on <Return>
-nnoremap <CR> :noh<CR>
+" Toggle search highlighting
+nnoremap <Leader><Space> :noh<CR>
 
 nmap <F4> :TagbarToggle<CR>
 nmap <F3> :NERDTreeToggle<CR>
-
-" Ack for the word under cursor
-nmap <Leader>a :Ack <C-r><C-w><CR>
 
 nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
 nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>]
@@ -193,10 +190,10 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
 " Supertab
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
+let g:SuperTabClosePreviewOnPopupClose=1
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 
 " CtrlP
 let g:ctrlp_clear_cache_on_exit = 0

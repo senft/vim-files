@@ -178,7 +178,7 @@ let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
 " Syntastic
-let g:syntastic_disabled_filetypes = ['cpp']
+"let g:syntastic_mode_map = { 'passive_filetypes': ['cpp'] }
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 4
@@ -188,7 +188,7 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
 
 " Supertab
-let g:SuperTabClosePreviewOnPopupClose=1
+"let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 let g:SuperTabClosePreviewOnPopupClose=1
 
@@ -226,8 +226,9 @@ hi User7 ctermbg=234 ctermfg=208 cterm=bold
 hi User8 ctermbg=234 ctermfg=161 cterm=bold
 
 set statusline=
-set statusline+=%1*%{fugitive#statusline()}			  "Fugitive
-set statusline+=%2*\ %<%F\ %m                         "File+path
+set statusline+=%6*%{fugitive#statusline()}			  "Fugitive
+set statusline+=%1*\ %{SyntasticStatuslineFlag()}\ 
+set statusline+=%2*%<%F\ %m                         "File+path
 set statusline+=%=
 set statusline+=%3*%y\                                "FileType
 set statusline+=%4*\ %{''.(&fenc!=''?&fenc:&enc).''}  "Encoding

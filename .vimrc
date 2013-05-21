@@ -103,14 +103,15 @@ nnoremap <F12> :set invpaste paste?<CR>
 nnoremap <C-space> <Plug>IMAP_JumpForward
 
 " Move between windows with CRTL+{hjkl}
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-l> <C-w>l
-" nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
 " Buffer movement
-noremap <C-j> :bp!<CR>
-noremap <C-k> :bn!<CR>
+noremap <left> :MBEbp<CR>
+noremap <right> :MBEbn<CR>
+nnoremap <Leader>bd :MBEbd<CR>
 
 " Folding
 nnoremap <space> za
@@ -185,9 +186,6 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 4
 
-" Powerline
-let g:Powerline_symbols = 'fancy'
-
 " NERDTree
 let NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
@@ -209,22 +207,42 @@ let g:gitgutter_enabled = 1
 " ----------------------------------------------------------------------------
 " Misc
 " ----------------------------------------------------------------------------
+"  Keep vim from changing the window position when switching buffers
+if v:version >= 700
+	au BufLeave * let b:winview = winsaveview()
+	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
+
 " use :W to force saving a file
 com! W :w !sudo tee %
 
 " Restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-" Display preview at bottom
-function! PreviewDown() 
-   if !&previewwindow 
-       silent! wincmd P 
-   endif 
-   if &previewwindow 
-       silent! wincmd J 
-       silent! wincmd p 
-   endif 
-endf 
-au BufWinEnter * call PreviewDown() 
+hi User1 ctermbg=234 ctermfg=161 cterm=bold
+hi User2 ctermbg=234 cterm=bold
+hi User3 ctermbg=234 ctermfg=81 cterm=bold
+hi User4 ctermbg=234 ctermfg=229 cterm=bold
+hi User5 ctermbg=234 ctermfg=193 cterm=bold
+hi User6 ctermbg=234 ctermfg=118 cterm=bold
+hi User7 ctermbg=234 ctermfg=208 cterm=bold
+hi User8 ctermbg=234 ctermfg=161 cterm=bold
 
+set statusline=
+set statusline+=%1*%{fugitive#statusline()}			  "Fugitive
+set statusline+=%2*\ %<%F\ %m                         "File+path
+set statusline+=%=
+set statusline+=%3*%y\                                "FileType
+set statusline+=%4*\ %{''.(&fenc!=''?&fenc:&enc).''}  "Encoding
+set statusline+=%4*\ %{(&bomb?\",BOM\":\"\")}\        "Encoding2
+set statusline+=%5*%{&ff}\                            "FileFormat (dos/unix..) 
+set statusline+=%6*\ row:%l/%L   					  "Rownumber/total
+set statusline+=%7*\ \ col:%03c\                      "Colnr
+set statusline+=%8*\ %r%w\ \                          "Readonly?
 
+hi MBEVisibleActiveNormal ctermfg=161 cterm=bold
+hi MBEVisibleChangedActive ctermfg=161 cterm=bold
+hi MBEVisibleChanged ctermfg=81 cterm=bold
+hi MBEVisibleNormal ctermfg=81 cterm=bold
+hi MBEChanged ctermfg=59
+hi MBENormal ctermfg=59

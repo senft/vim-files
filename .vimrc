@@ -1,3 +1,4 @@
+"let g:pathogen_disabled = ['python-mode', 'vim-gitgutter']
 set nocompatible
 set encoding=utf-8
 
@@ -96,6 +97,9 @@ set nofoldenable				" disable folding
 " ----------------------------------------------------------------------------
 let mapleader = ","
 
+" Goto "definition"
+map <Leader>d <C-]>
+
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>
 
@@ -120,6 +124,9 @@ vnoremap <space> zf
 " Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
+
+nnoremap n nzz
+nnoremap N Nzz
 
 " Reselect visual block after indent
 vnoremap < <gv
@@ -178,7 +185,7 @@ let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
 " Syntastic
-"let g:syntastic_mode_map = { 'passive_filetypes': ['cpp'] }
+let g:syntastic_mode_map = { 'passive_filetypes': ['cpp'] }
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 4
@@ -188,15 +195,18 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
 
 " Supertab
-"let g:SuperTabClosePreviewOnPopupClose=1
+let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 let g:SuperTabClosePreviewOnPopupClose=1
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<s-tab>"
+"let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " CtrlP
 let g:ctrlp_clear_cache_on_exit = 0
+
+let g:miniBufExplTabWrap = 1
 
 highlight clear SignColumn
 let g:gitgutter_enabled = 1
@@ -227,7 +237,6 @@ hi User8 ctermbg=234 ctermfg=161 cterm=bold
 
 set statusline=
 set statusline+=%6*%{fugitive#statusline()}			  "Fugitive
-set statusline+=%1*\ %{SyntasticStatuslineFlag()}\ 
 set statusline+=%2*%<%F\ %m                         "File+path
 set statusline+=%=
 set statusline+=%3*%y\                                "FileType

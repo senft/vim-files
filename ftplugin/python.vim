@@ -12,13 +12,16 @@ map <F6> :w<CR>:!./.run <CR>
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
 
 let g:pymode_lint = 0
+
+let g:pymode_rope = 1
+let g:pymode_rope_vim_completion = 0
 let g:pymode_rope_auto_project = 1
 let g:ropevim_enable_autoimport = 0
 let g:ropevim_guess_project = 0
 
 " Completion
 let g:SuperTabDefaultCompletionType="context"
-set completeopt=menuone,longest,preview
+set completeopt=menuone,longest
 set previewheight=20							" maximum height for preview window
 
 nnoremap <leader>n :RopeRename<CR>

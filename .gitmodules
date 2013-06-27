@@ -69,3 +69,6 @@
 [submodule "bundle/vim-plugin-minibifexpl"]
 	path = bundle/vim-plugin-minibifexpl
 	url = https://github.com/techlivezheng/vim-plugin-minibufexpl.git
+[submodule "bundle/vim-powerline"]
+	path = bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git

@@ -180,6 +180,9 @@ set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.pn
 " Plugin settings
 " ----------------------------------------------------------------------------
 
+" Powerline
+let g:Powerline_symbols = 'fancy'
+
 " Tagbar
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
@@ -225,27 +228,6 @@ com! W :w !sudo tee %
 
 " Restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-hi User1 ctermbg=234 ctermfg=161 cterm=bold
-hi User2 ctermbg=234 cterm=bold
-hi User3 ctermbg=234 ctermfg=81 cterm=bold
-hi User4 ctermbg=234 ctermfg=229 cterm=bold
-hi User5 ctermbg=234 ctermfg=193 cterm=bold
-hi User6 ctermbg=234 ctermfg=118 cterm=bold
-hi User7 ctermbg=234 ctermfg=208 cterm=bold
-hi User8 ctermbg=234 ctermfg=161 cterm=bold
-
-set statusline=
-set statusline+=%6*%{fugitive#statusline()}			  "Fugitive
-set statusline+=%2*%<%F\ %m                         "File+path
-set statusline+=%=
-set statusline+=%3*%y\                                "FileType
-set statusline+=%4*\ %{''.(&fenc!=''?&fenc:&enc).''}  "Encoding
-set statusline+=%4*\ %{(&bomb?\",BOM\":\"\")}\        "Encoding2
-set statusline+=%5*%{&ff}\                            "FileFormat (dos/unix..) 
-set statusline+=%6*\ row:%l/%L   					  "Rownumber/total
-set statusline+=%7*\ \ col:%03c\                      "Colnr
-set statusline+=%8*\ %r%w\ \                          "Readonly?
 
 hi MBEVisibleActiveNormal ctermfg=161 cterm=bold
 hi MBEVisibleChangedActive ctermfg=161 cterm=bold

@@ -140,6 +140,7 @@ vmap Q gq
 nmap Q gqap
 
 " I only hit those by accident (and dont use macros,..)
+vnoremap q <nop>
 nnoremap q <nop>
 nnoremap Q <nop>
 
@@ -150,15 +151,14 @@ nnoremap Y y$
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>
+noremap <Leader>gw :Gwrite<CR>
+noremap <Leader>gr :Gread<CR>
 
 " Toggle search highlighting
 nnoremap <Leader><Space> :noh<CR>
 
 nmap <F4> :TagbarToggle<CR>
 nmap <F3> :NERDTreeToggle<CR>
-
-nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
-nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>]
 
 " System clipboard interaction.  Mostly from:
 " https://github.com/henrik/dotfiles/blob/master/vim/config/mappings.vim
@@ -199,7 +199,7 @@ let g:tagbar_autofocus = 1
 
 " Syntastic
 let g:syntastic_enable_signs = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list= 2 " When set to 2 the error window will be automatically closed when no errors are detected, but not opened automatically
 let g:syntastic_error_symbol='✗'
@@ -229,6 +229,7 @@ let g:miniBufExplStatusLineText = ""
 
 highlight clear SignColumn
 let g:gitgutter_enabled = 1
+let g:gitgutter_eager = 0
 
 " ----------------------------------------------------------------------------
 " Misc
@@ -251,3 +252,17 @@ hi MBEVisibleChanged ctermfg=81 cterm=bold
 hi MBEVisibleNormal ctermfg=81 cterm=bold
 hi MBEChanged ctermfg=59
 hi MBENormal ctermfg=59
+
+if !&scrolloff
+  set scrolloff=2
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+  endif
+endif

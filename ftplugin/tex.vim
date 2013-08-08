@@ -2,7 +2,7 @@
 set nocursorline
 
 set formatoptions=tcq
-set textwidth=79
+set textwidth=95
 
 let g:Imap_UsePlaceHolders = 0
 
@@ -15,7 +15,7 @@ let g:Tex_AutoFolding = 0
 let g:Tex_SmartKeyQuote=1
 
 set spell
-set spelllang=de,en
+set spelllang=en_us
 syntax spell notoplevel
 let g:tex_comment_nospell= 1
 

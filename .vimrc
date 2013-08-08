@@ -1,3 +1,5 @@
+let g:pathogen_disabled = []
+
 set nocompatible
 set encoding=utf-8
 
@@ -131,9 +133,9 @@ nnoremap N Nzz
 vnoremap < <gv
 vnoremap > >gv
 
-" sv for vertical split, sh for horizontal
-nnoremap <silent> sv <C-w>v
-nnoremap <silent> sh :split<CR>
+" <leader>v for vertical split, <leader>h for horizontal
+nnoremap <silent> <leader>v <C-w>v
+nnoremap <silent> <leader>h :split<CR>
 
 "Use Q for formatting the current paragraph (or selection)
 vmap Q gq
@@ -142,7 +144,6 @@ nmap Q gqap
 " I only hit those by accident (and dont use macros,..)
 vnoremap q <nop>
 nnoremap q <nop>
-nnoremap Q <nop>
 
 " Make Y consistent with C and D.  See :help Y.
 nnoremap Y y$
@@ -166,6 +167,9 @@ noremap <leader>y "*y
 noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
 noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
 vnoremap <leader>y "*ygv
+
+nnoremap <Leader>u :GundoToggle<CR>
+let g:gundo_close_on_revert = 1
 
 " ----------------------------------------------------------------------------
 " reading and writing files

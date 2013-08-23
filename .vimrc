@@ -22,6 +22,7 @@ set smartcase                   " ... unless they contain at least one capital l
 " displaying text
 " ----------------------------------------------------------------------------
 set number                      " display line numbers
+set nowrap
 
 " ----------------------------------------------------------------------------
 " syntax, highlighting and spelling
@@ -236,6 +237,19 @@ highlight clear SignColumn
 let g:gitgutter_enabled = 1
 let g:gitgutter_eager = 0
 
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme="powerlineish"
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#branch#symbol = ' '
+let g:airline#extensions#readonly#symbol = ''
+let g:airline_linecolumn_prefix = ' '
+let g:airline#extensions#hunks#enabled = 0
+
+
 " ----------------------------------------------------------------------------
 " Misc
 " ----------------------------------------------------------------------------
@@ -258,12 +272,8 @@ hi MBEVisibleNormal ctermfg=81 cterm=bold
 hi MBEChanged ctermfg=59
 hi MBENormal ctermfg=59
 
-if !&scrolloff
-  set scrolloff=2
-endif
-if !&sidescrolloff
-  set sidescrolloff=5
-endif
+" Keep cursor away from edges of screen.
+set so=10
 
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+

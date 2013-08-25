@@ -14,10 +14,6 @@
 	path = bundle/autoclose
 	url = https://github.com/Townk/vim-autoclose.git
 	ignore = dirty
-[submodule "bundle/vim-latex"]
-	path = bundle/vim-latex
-	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
-	ignore = dirty
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
@@ -69,9 +65,12 @@
 [submodule "bundle/vim-plugin-minibifexpl"]
 	path = bundle/vim-plugin-minibifexpl
 	url = https://github.com/techlivezheng/vim-plugin-minibufexpl.git
+	ignore = dirty
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
+	ignore = dirty
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
+	ignore = dirty

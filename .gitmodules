@@ -22,10 +22,6 @@
 	path = bundle/UltiSnips
 	url = https://github.com/vim-scripts/UltiSnips.git
 	ignore = dirty
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = git://github.com/majutsushi/tagbar
-	ignore = dirty
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = https://github.com/klen/python-mode.git

@@ -46,6 +46,12 @@ set previewheight=20			" maximum height for preview window
 " ----------------------------------------------------------------------------
 set ttyfast
 
+if has('unnamedplus')
+	set clipboard=unnamedplus
+else
+	set clipboard=unnamed
+endif
+
 " ----------------------------------------------------------------------------
 " using the mouse
 " ----------------------------------------------------------------------------
@@ -142,10 +148,6 @@ nnoremap <silent> <leader>h :split<CR>
 "Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
-
-" I only hit those by accident (and dont use macros,..)
-vnoremap q <nop>
-nnoremap q <nop>
 
 " Make Y consistent with C and D.  See :help Y.
 nnoremap Y y$

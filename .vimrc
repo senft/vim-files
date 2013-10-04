@@ -63,8 +63,8 @@ set mouse=nicr					" mouse click does not enter visual mode
 set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
-set guioptions-=m				"remove menu bar
-set guifont=Envy\ Code\ R\ 10
+set guioptions-=m				" remove menu bar
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10 
 
 " ----------------------------------------------------------------------------
 " printing

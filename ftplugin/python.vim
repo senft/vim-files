@@ -10,6 +10,7 @@ map <F5> :w<CR>:!chmod +x "%"<CR>:!./"%"<CR>
 map <F6> :w<CR>:!./.run <CR>
 
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
+let g:syntastic_python_flake8_args = '--ignore=E501'
 
 let g:pymode_lint = 0
 

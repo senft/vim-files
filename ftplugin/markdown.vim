@@ -1,13 +1,16 @@
-
 set background=light
 set nonu
 set laststatus=0
 colorscheme default
-hi FoldColumn guibg=white
 set foldcolumn=12
 set linespace=8
-set guifont=Envy\ Code\ R\ 13
+"set guifont=Envy\ Code\ R\ 13
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
 set tw=80
+
+set so=999
+
+hi FoldColumn guibg=white
 hi Normal guibg=gray95
 hi NonText guifg=gray95
 hi FoldColumn guibg=gray95
@@ -27,7 +30,10 @@ hi markdownIdDeclaration guifg=#317849 gui=bold
 hi markdownListMarker guifg=#317849
 highlight Cursor guibg=#15abdd
 
-if !exists('g:markdown_fullscreen')
-	let g:markdown_fullscreen = 1
-	:silent !i3-msg fullscreen
-endif
+"if !exists('g:markdown_fullscreen')
+"	let g:markdown_fullscreen = 1
+"	:silent !i3-msg fullscreen
+"endif
+
+":nnoremap j jzz
+":nnoremap k kzz

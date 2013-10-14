@@ -1,4 +1,4 @@
-let g:pathogen_disabled = []
+let g:pathogen_disabled=["vim-plugin-minibifexpl"]
 
 set nocompatible
 set encoding=utf-8
@@ -40,6 +40,7 @@ color molokai
 " ----------------------------------------------------------------------------
 set laststatus=2				" always display statusbar
 set previewheight=20			" maximum height for preview window
+set hidden
 
 " ----------------------------------------------------------------------------
 " terminal
@@ -64,7 +65,7 @@ set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
 set guioptions-=m				" remove menu bar
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10 
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
 
 " ----------------------------------------------------------------------------
 " printing
@@ -77,7 +78,7 @@ set ruler                       " show the cursor position all the time
 set showcmd                     " display incomplete commands
 set showmode
 
- set pumheight=20               " Limit popup menu height
+set pumheight=20               " Limit popup menu height
 
 " ----------------------------------------------------------------------------
 " selecting text
@@ -86,7 +87,7 @@ set showmode
 " ----------------------------------------------------------------------------
 " editing text
 " ----------------------------------------------------------------------------
-set completeopt=menu,longest,preview
+set completeopt=menu,menuone,longest,preview
 
 " ----------------------------------------------------------------------------
 " tabs and indenting
@@ -104,7 +105,7 @@ set nofoldenable				" disable folding
 " ----------------------------------------------------------------------------
 " mapping
 " ----------------------------------------------------------------------------
-let mapleader = ","
+let mapleader=","
 
 " Goto "definition"
 map <Leader>d <C-]>
@@ -122,9 +123,11 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
 " Buffer movement
-noremap <left> :MBEbp<CR>
-noremap <right> :MBEbn<CR>
-nnoremap <Leader>bd :MBEbd<CR>
+"noremap <left> :MBEbp<CR>
+"noremap <right> :MBEbn<CR>
+"nnoremap <Leader>bd :MBEbd<CR>
+noremap <left> :bp<CR>
+noremap <right> :bn<CR>
 
 " Folding
 nnoremap <space> za
@@ -162,18 +165,9 @@ noremap <Leader>gr :Gread<CR>
 " Toggle search highlighting
 nnoremap <Leader><Space> :noh<CR>
 
-nmap <F4> :TagbarToggle<CR>
 nmap <F3> :NERDTreeToggle<CR>
 
-" System clipboard interaction.  Mostly from:
-" https://github.com/henrik/dotfiles/blob/master/vim/config/mappings.vim
-noremap <leader>y "*y
-noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
-vnoremap <leader>y "*ygv
-
 nnoremap <Leader>u :GundoToggle<CR>
-let g:gundo_close_on_revert = 1
 
 " ----------------------------------------------------------------------------
 " reading and writing files
@@ -192,73 +186,78 @@ set noswapfile                  " disable swap file
 " ----------------------------------------------------------------------------
 set undofile
 set undodir=~/.vimundo
-set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
+"set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
 
 " ----------------------------------------------------------------------------
 " Plugin settings
 " ----------------------------------------------------------------------------
 
-" Powerline
-let g:Powerline_symbols = 'fancy'
-
 " Tagbar
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus=1
 
 " Syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_loc_list_height = 5
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_open=0
+let g:syntastic_loc_list_height=5
 let g:syntastic_auto_loc_list= 2 " When set to 2 the error window will be automatically closed when no errors are detected, but not opened automatically
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
 " NERDTree
-let NERDTreeQuitOnOpen = 1
+let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
 
 " Supertab
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 let g:SuperTabClosePreviewOnPopupClose=1
+let g:SuperTabDefaultCompletionType="context"
+let g:SuperTabContextDefaultCompletionType="<c-n>"
 
 " UltiSnips
-"let g:UltiSnipsExpandTrigger="<s-tab>"
-"let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsExpandTrigger="<c-j>"
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsListSnippets="<s-tab>"
 
 " CtrlP
-let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_custom_ignore={
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(png|jpg|gif|jpeg|pdf|so|dll|class|pyc)$',
+	\ }
 
-let g:miniBufExplTabWrap = 1
-let g:miniBufExplStatusLineText = ""
+" Minibufexpl
+let g:miniBufExplTabWrap=1
+let g:miniBufExplStatusLineText=""
 
+" Gitgutter
 highlight clear SignColumn
-let g:gitgutter_enabled = 1
-let g:gitgutter_eager = 0
+highlight SyntasticErrorSign ctermbg=none ctermfg=161 cterm=bold
+highlight SyntasticWarningSign ctermbg=none
+let g:gitgutter_enabled=1
+let g:gitgutter_eager=0
 
 " Airline
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_nr_show=1
+let g:airline#extensions#tabline#buffer_min_count=2
+let g:airline_powerline_fonts=1
 let g:airline_theme="powerlineish"
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline#extensions#branch#symbol = ' '
-let g:airline#extensions#readonly#symbol = ''
-let g:airline_linecolumn_prefix = ' '
-let g:airline#extensions#hunks#enabled = 0
 
+" Gundo
+let g:gundo_close_on_revert=1
+let g:gundo_width=60
+let g:gundo_preview_height=40
 
 " ----------------------------------------------------------------------------
 " Misc
 " ----------------------------------------------------------------------------
 "  Keep vim from changing the window position when switching buffers
 if v:version >= 700
-    au BufLeave * let b:winview = winsaveview()
-    au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+	au BufLeave * let b:winview=winsaveview()
+	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 
 " use :W to force saving a file
@@ -276,10 +275,3 @@ hi MBENormal ctermfg=59
 
 " Keep cursor away from edges of screen.
 set so=10
-
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-  endif
-endif

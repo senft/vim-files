@@ -28,3 +28,5 @@ set previewheight=20							" maximum height for preview window
 nnoremap <leader>n :RopeRename<CR>
 nnoremap <leader>d :RopeGotoDefinition<CR>
 nnoremap <leader>h :RopeShowDoc<CR>
+
+let g:ipy_completefunc = ''

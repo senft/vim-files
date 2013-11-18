@@ -22,6 +22,7 @@ set smartcase                   " ... unless they contain at least one capital l
 " displaying text
 " ----------------------------------------------------------------------------
 set number                      " display line numbers
+set relativenumber
 set nowrap
 
 " ----------------------------------------------------------------------------
@@ -243,8 +244,10 @@ let g:gitgutter_eager=0
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#buffer_min_count=2
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 let g:airline_theme="powerlineish"
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " Gundo
 let g:gundo_close_on_revert=1

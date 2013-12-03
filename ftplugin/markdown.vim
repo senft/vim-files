@@ -4,8 +4,7 @@ set laststatus=0
 colorscheme default
 set foldcolumn=12
 set linespace=8
-"set guifont=Envy\ Code\ R\ 13
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 set tw=80
 
 set so=999

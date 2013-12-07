@@ -93,6 +93,7 @@ set completeopt=menu,menuone,longest,preview
 " ----------------------------------------------------------------------------
 " tabs and indenting
 " ----------------------------------------------------------------------------
+set expandtab
 set tabstop=4                   " a tab is 4 spaces
 set shiftwidth=4
 set softtabstop=4

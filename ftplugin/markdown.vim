@@ -7,6 +7,9 @@ set linespace=8
 set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 set tw=80
 
+set nonumber
+set norelativenumber
+
 set so=999
 
 hi FoldColumn guibg=white

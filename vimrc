@@ -1,6 +1,5 @@
 let g:pathogen_disabled=["vim-plugin-minibifexpl"]
 
-set nocompatible
 set encoding=utf-8
 
 " ----------------------------------------------------------------------------
@@ -171,6 +170,10 @@ nmap <F3> :NERDTreeToggle<CR>
 
 nnoremap <Leader>u :GundoToggle<CR>
 
+nnoremap <C-m> :CtrlPFunky<CR>
+
+imap jj <Esc>
+
 " ----------------------------------------------------------------------------
 " reading and writing files
 " ----------------------------------------------------------------------------
@@ -229,6 +232,7 @@ let g:ctrlp_custom_ignore={
 	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 	\ 'file': '\v\.(png|jpg|gif|jpeg|pdf|so|dll|class|pyc)$',
 	\ }
+let g:ctrlp_extensions = ['funky']
 
 " Minibufexpl
 let g:miniBufExplTabWrap=1

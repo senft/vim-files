@@ -66,3 +66,6 @@
 	path = bundle/UltiSnips
 	url = https://github.com/SirVer/ultisnips.git
 	ignore = dirty
+[submodule "bundle/ctrlp-funky"]
+	path = bundle/ctrlp-funky
+	url = https://github.com/tacahiroy/ctrlp-funky.git

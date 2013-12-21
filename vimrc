@@ -233,6 +233,7 @@ let g:ctrlp_custom_ignore={
 	\ 'file': '\v\.(png|jpg|gif|jpeg|pdf|so|dll|class|pyc)$',
 	\ }
 let g:ctrlp_extensions = ['funky']
+let g:ctrlp_show_hidden = 1
 
 " Minibufexpl
 let g:miniBufExplTabWrap=1

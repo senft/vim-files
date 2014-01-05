@@ -21,7 +21,6 @@ set smartcase                   " ... unless they contain at least one capital l
 " displaying text
 " ----------------------------------------------------------------------------
 set number                      " display line numbers
-set relativenumber
 set nowrap
 
 " ----------------------------------------------------------------------------
@@ -170,7 +169,7 @@ nmap <F3> :NERDTreeToggle<CR>
 
 nnoremap <Leader>u :GundoToggle<CR>
 
-nnoremap <C-m> :CtrlPFunky<CR>
+nnoremap <C-g> :CtrlPFunky<CR>
 
 imap jj <Esc>
 
@@ -245,6 +244,7 @@ highlight SyntasticErrorSign ctermbg=none ctermfg=161 cterm=bold
 highlight SyntasticWarningSign ctermbg=none
 let g:gitgutter_enabled=1
 let g:gitgutter_eager=0
+highlight SignColumn ctermbg=233
 
 " Airline
 let g:airline#extensions#tabline#enabled=1
@@ -271,6 +271,8 @@ endif
 
 " use :W to force saving a file
 com! W :w !sudo tee %
+
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " Restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif

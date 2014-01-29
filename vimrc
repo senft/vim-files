@@ -1,5 +1,3 @@
-let g:pathogen_disabled=["vim-plugin-minibifexpl"]
-
 set encoding=utf-8
 
 " ----------------------------------------------------------------------------
@@ -47,9 +45,9 @@ set hidden
 set ttyfast
 
 if has('unnamedplus')
-	set clipboard=unnamedplus
+    set clipboard=unnamedplus
 else
-	set clipboard=unnamed
+    set clipboard=unnamed
 endif
 
 " ----------------------------------------------------------------------------
@@ -77,7 +75,7 @@ set ruler                       " show the cursor position all the time
 set showcmd                     " display incomplete commands
 set showmode
 
-set pumheight=20               " Limit popup menu height
+set pumheight=20                " Limit popup menu height
 
 " ----------------------------------------------------------------------------
 " selecting text
@@ -86,6 +84,7 @@ set pumheight=20               " Limit popup menu height
 " ----------------------------------------------------------------------------
 " editing text
 " ----------------------------------------------------------------------------
+set wildmenu                    " visual autocomplete for command menu
 set completeopt=menu,menuone,longest,preview
 
 " ----------------------------------------------------------------------------
@@ -114,7 +113,7 @@ map <Leader>d <C-]>
 nnoremap <F12> :set invpaste paste?<CR>
 
 " We have to remap vim-latex's mapping to <C-j> in order to use it...
-nnoremap <C-space> <Plug>IMAP_JumpForward
+"nnoremap <C-space> <Plug>IMAP_JumpForward
 
 " Move between windows with CRTL+{hjkl}
 nnoremap <C-j> <C-w>j
@@ -123,34 +122,45 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
 " Buffer movement
-"noremap <left> :MBEbp<CR>
-"noremap <right> :MBEbn<CR>
-"nnoremap <Leader>bd :MBEbd<CR>
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
+"noremap <left> :bp<CR>
+"noremap <right> :bn<CR>
+noremap H :bp<CR>
+noremap L :bn<CR>
+
+" Resize Windows with arrow keys
+noremap <up> 2<c-w>+
+noremap <down> 2<c-w>-
+noremap <left> 3<c-w><
+noremap <right> 3<c-w>>
+
+"noremap <space> i <esc>l " insert one space
+noremap <space> i <esc>2li <esc>h " surround current char with spaces
 
 " Folding
-nnoremap <space> za
-vnoremap <space> zf
+"nnoremap <space> za
+"vnoremap <space> zf
 
 " Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
 
-nnoremap n nzz
-nnoremap N Nzz
+"nnoremap n nzz
+"nnoremap N Nzz
 
 " Reselect visual block after indent
 vnoremap < <gv
 vnoremap > >gv
 
-" <leader>v for vertical split, <leader>h for horizontal
+" splits
 nnoremap <silent> <leader>v <C-w>v
 nnoremap <silent> <leader>h :split<CR>
+
+nnoremap <leader>p o<ESC>p
 
 "Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
+"nmap F gg=G<c-o><c-o>
 
 " Make Y consistent with C and D.  See :help Y.
 nnoremap Y y$
@@ -206,7 +216,14 @@ let g:syntastic_check_on_open=0
 let g:syntastic_loc_list_height=5
 let g:syntastic_auto_loc_list= 2 " When set to 2 the error window will be automatically closed when no errors are detected, but not opened automatically
 let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
+let g:syntastic_warning_symbol='⚠∆'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_style_warning_symbol = '≈'
+
+highlight clear SignColumn
+highlight SyntasticErrorSign ctermbg=none ctermfg=161 cterm=bold
+highlight SyntasticWarningSign ctermbg=none
+
 
 " NERDTree
 let NERDTreeQuitOnOpen=1
@@ -228,9 +245,9 @@ let g:UltiSnipsListSnippets="<s-tab>"
 " CtrlP
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_custom_ignore={
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(png|jpg|gif|jpeg|pdf|so|dll|class|pyc)$',
-	\ }
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(png|jpg|gif|jpeg|pdf|so|dll|class|pyc)$',
+    \ }
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_show_hidden = 1
 
@@ -239,9 +256,6 @@ let g:miniBufExplTabWrap=1
 let g:miniBufExplStatusLineText=""
 
 " Gitgutter
-highlight clear SignColumn
-highlight SyntasticErrorSign ctermbg=none ctermfg=161 cterm=bold
-highlight SyntasticWarningSign ctermbg=none
 let g:gitgutter_enabled=1
 let g:gitgutter_eager=0
 highlight SignColumn ctermbg=233
@@ -265,8 +279,8 @@ let g:gundo_preview_height=40
 " ----------------------------------------------------------------------------
 "  Keep vim from changing the window position when switching buffers
 if v:version >= 700
-	au BufLeave * let b:winview=winsaveview()
-	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+    au BufLeave * let b:winview=winsaveview()
+    au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 
 " use :W to force saving a file
@@ -286,3 +300,26 @@ hi MBENormal ctermfg=59
 
 " Keep cursor away from edges of screen.
 set so=10
+
+" Auto highlight current word when idle
+" http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
+" http://stackoverflow.com/a/1552193
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+    augroup end
+    setl updatetime=500
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction

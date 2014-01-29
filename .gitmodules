@@ -50,10 +50,6 @@
 	path = bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
 	ignore = dirty
-[submodule "bundle/vim-plugin-minibifexpl"]
-	path = bundle/vim-plugin-minibifexpl
-	url = https://github.com/techlivezheng/vim-plugin-minibufexpl.git
-	ignore = dirty
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
@@ -69,3 +65,4 @@
 [submodule "bundle/ctrlp-funky"]
 	path = bundle/ctrlp-funky
 	url = https://github.com/tacahiroy/ctrlp-funky.git
+	ignore = dirty

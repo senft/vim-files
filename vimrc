@@ -315,3 +315,48 @@ function! AutoHighlightToggle()
     return 1
   endif
 endfunction
+nnoremap <leader>hw :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+
+" Ranger as a filechooser
+function! RangeChooser()
+    let temp = tempname()
+" The option "--choosefiles" was added in ranger 1.5.1. Use the next line
+" with ranger 1.4.2 through 1.5.0 instead.
+"exec 'silent !ranger --choosefile=' . shellescape(temp)
+    exec 'silent !ranger --choosefiles=' . shellescape(temp)
+    if !filereadable(temp)
+" Nothing to read.
+        return
+    endif
+    let names = readfile(temp)
+    if empty(names)
+" Nothing to open.
+        return
+    endif
+" Edit the first item.
+    exec 'edit ' . fnameescape(names[0])
+" Add any remaning items to the arg list/buffer list.
+    for name in names[1:]
+        exec 'argadd ' . fnameescape(name)
+    endfor
+    :redraw!
+endfunction
+command! -bar RangerChooser call RangeChooser()
+nnoremap <F3> :<C-U>RangerChooser<CR>
+
+function! Spaces()
+    norm! mp
+    silent! %s/\t/    /g " Replace tabs with spaces
+    silent! %s/\s\+$//   " Remove trailing spaces
+    norm! `p
+endfunction
+command! -bar Spaces call Spaces() 
+
+" Disable cursorline in inactive splits
+augroup CursorLine
+    au!
+    au VimEnter * setlocal cursorline
+    au WinEnter * setlocal cursorline
+    au BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END

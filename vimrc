@@ -216,7 +216,7 @@ let g:syntastic_check_on_open=0
 let g:syntastic_loc_list_height=5
 let g:syntastic_auto_loc_list= 2 " When set to 2 the error window will be automatically closed when no errors are detected, but not opened automatically
 let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠∆'
+let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_style_warning_symbol = '≈'
 
@@ -266,8 +266,6 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#buffer_min_count=2
 let g:airline_powerline_fonts=1
 let g:airline_theme="powerlineish"
-"let g:airline_left_sep=''
-"let g:airline_right_sep=''
 
 " Gundo
 let g:gundo_close_on_revert=1
@@ -293,13 +291,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 
 " Restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-hi MBEVisibleActiveNormal ctermfg=161 cterm=bold
-hi MBEVisibleChangedActive ctermfg=161 cterm=bold
-hi MBEVisibleChanged ctermfg=81 cterm=bold
-hi MBEVisibleNormal ctermfg=81 cterm=bold
-hi MBEChanged ctermfg=59
-hi MBENormal ctermfg=59
 
 " Keep cursor away from edges of screen.
 set so=10

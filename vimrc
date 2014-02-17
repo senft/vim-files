@@ -19,6 +19,7 @@ set smartcase                   " ... unless they contain at least one capital l
 " displaying text
 " ----------------------------------------------------------------------------
 set number                      " display line numbers
+set relativenumber              " display relative line numbers
 set nowrap
 
 " ----------------------------------------------------------------------------
@@ -85,7 +86,7 @@ set pumheight=20                " Limit popup menu height
 " editing text
 " ----------------------------------------------------------------------------
 set wildmenu                    " visual autocomplete for command menu
-set completeopt=menu,menuone,longest,preview
+set completeopt=menu,longest,menuone
 
 " ----------------------------------------------------------------------------
 " tabs and indenting
@@ -100,20 +101,21 @@ set smartindent
 " folding
 " ----------------------------------------------------------------------------
 set nofoldenable				" disable folding
+set foldnestmax=3
 
 " ----------------------------------------------------------------------------
 " mapping
 " ----------------------------------------------------------------------------
 let mapleader=","
 
+" indent code
+nnoremap <leader>i gg=G<C-o><C-o>
+
 " Goto "definition"
 map <Leader>d <C-]>
 
 " Toggle paste mode with F2
 nnoremap <F12> :set invpaste paste?<CR>
-
-" We have to remap vim-latex's mapping to <C-j> in order to use it...
-"nnoremap <C-space> <Plug>IMAP_JumpForward
 
 " Move between windows with CRTL+{hjkl}
 nnoremap <C-j> <C-w>j
@@ -122,10 +124,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
 " Buffer movement
-"noremap <left> :bp<CR>
-"noremap <right> :bn<CR>
-noremap H :bp<CR>
-noremap L :bn<CR>
+noremap <silent> H :bp<CR>
+noremap <silent> L :bn<CR>
+
+nnoremap <c-s> :w<CR>
 
 " Resize Windows with arrow keys
 noremap <up> 2<c-w>+
@@ -133,12 +135,12 @@ noremap <down> 2<c-w>-
 noremap <left> 3<c-w><
 noremap <right> 3<c-w>>
 
-"noremap <space> i <esc>l " insert one space
-noremap <space> i <esc>2li <esc>h " surround current char with spaces
+" surround current char with spaces
+noremap S i <esc>2li <esc>h
 
 " Folding
-"nnoremap <space> za
-"vnoremap <space> zf
+nnoremap <space> za
+vnoremap <space> zf
 
 " Improve up/down movement on wrapped lines
 nnoremap j gj
@@ -152,15 +154,12 @@ vnoremap < <gv
 vnoremap > >gv
 
 " splits
-nnoremap <silent> <leader>v <C-w>v
-nnoremap <silent> <leader>h :split<CR>
-
-nnoremap <leader>p o<ESC>p
+nnoremap <leader>sv :vsplit<CR>
+nnoremap <leader>sh :split<CR>
 
 "Use Q for formatting the current paragraph (or selection)
 vmap Q gq
-nmap Q gqap
-"nmap F gg=G<c-o><c-o>
+nmap Q mpgqap`p
 
 " Make Y consistent with C and D.  See :help Y.
 nnoremap Y y$
@@ -179,6 +178,7 @@ nmap <F3> :NERDTreeToggle<CR>
 
 nnoremap <Leader>u :GundoToggle<CR>
 
+nnoremap <C-t> :CtrlPBuffer<CR>
 nnoremap <C-g> :CtrlPFunky<CR>
 
 imap jj <Esc>
@@ -223,7 +223,6 @@ let g:syntastic_style_warning_symbol = '≈'
 highlight clear SignColumn
 highlight SyntasticErrorSign ctermbg=none ctermfg=161 cterm=bold
 highlight SyntasticWarningSign ctermbg=none
-
 
 " NERDTree
 let NERDTreeQuitOnOpen=1
@@ -298,7 +297,6 @@ set so=10
 " Auto highlight current word when idle
 " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
 " http://stackoverflow.com/a/1552193
-nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
   let @/ = ''
   if exists('#auto_highlight')
@@ -313,7 +311,7 @@ function! AutoHighlightToggle()
       au CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
     augroup end
     setl updatetime=500
-    echo 'Highlight current word: ON'
+    echo 'Highlight current word: on'
     return 1
   endif
 endfunction

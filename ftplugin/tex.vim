@@ -1,30 +1,39 @@
-" Very sluggish UI in latex mode
 set nocursorline
 
 set formatoptions=tcq
 set textwidth=95
 
-let g:Imap_UsePlaceHolders = 0
-
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "pdflatex"
-let g:Tex_DefaultTargetFormat = "pdf"
-let g:Tex_ViewRule_pdf="zathura"
-let g:Tex_AutoFolding = 0
-
-let g:Tex_SmartKeyQuote=1
-
 set spell
 set spelllang=en_us
 syntax spell notoplevel
-let g:tex_comment_nospell= 1
 
-let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
-let g:Tex_GotoError = 0
+"noremap <leader>r :!pdflatex "%"<CR>
+"noremap <leader>v :!xdg-open "%:r.pdf"&<CR><CR>
 
-vnoremap <C-b> :s/\%V\(\_.*\)\%V/\\textbf{\1}/g<CR>:noh<CR>
-vnoremap <C-e> :s/\%V\(\_.*\)\%V/\\emph{\1}/g<CR>:noh<CR>
-vnoremap <C-t> :s/\%V\(\_.*\)\%V/\\texttt{\1}/g<CR>:noh<CR>
+noremap <leader>r :Latexmk<CR>
+noremap <leader>v :LatexView<CR>
 
-noremap <leader>r :!pdflatex "%"<CR>
-noremap <leader>v :!xdg-open "%:r.pdf"&<CR><CR>
+noremap <c-g> :LatexTOC<CR>
+
+" add ability to surround with tex command to surround.vim
+"let g:surround_{char2nr('c')} = "\\\1command\1{\r}"
+
+"nnoremap <C-b> ysiwc textbf<CR>
+"nnoremap <C-e> ysiwc emph<CR>
+"nnoremap <C-t> ysiwc texttt<CR>
+"vnoremap <C-b> Sc textbf<CR>
+"vnoremap <C-e> Sc emph<CR>
+"vnoremap <C-t> Sc texttt<CR>
+
+" let g:SuperTabDefaultCompletionType="<c-x><c-o>"
+
+let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_split_width = 40
+let g:LatexBox_Folding=1
+
+imap ]] <Plug>LatexCloseCurEnv
+imap <buffer> [[     \begin{
+imap <buffer> ]]     <Plug>LatexCloseCurEnv
+nmap <buffer> <F5>   <Plug>LatexChangeEnv
+vmap <buffer> <F6>   <Plug>LatexEnvWrapSelection
+vmap <buffer> <F7>   <Plug>LatexWrapSelection

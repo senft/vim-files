@@ -66,3 +66,9 @@
 	path = bundle/ctrlp-funky
 	url = https://github.com/tacahiroy/ctrlp-funky.git
 	ignore = dirty
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "bundle/Latex-Box"]
+	path = bundle/Latex-Box
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git

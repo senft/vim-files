@@ -274,6 +274,9 @@ let g:gundo_close_on_revert=1
 let g:gundo_width=60
 let g:gundo_preview_height=40
 
+" easymotion
+let g:EasyMotion_leader_key = '<leader>'
+
 " ----------------------------------------------------------------------------
 " Misc
 " ----------------------------------------------------------------------------

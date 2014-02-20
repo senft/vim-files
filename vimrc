@@ -1,3 +1,5 @@
+let g:pathogen_disabled = []
+
 set encoding=utf-8
 
 " ----------------------------------------------------------------------------
@@ -63,7 +65,7 @@ set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
 set guioptions-=m				" remove menu bar
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
+set guifont=Tamzen\ 9
 
 " ----------------------------------------------------------------------------
 " printing
@@ -237,8 +239,8 @@ let g:SuperTabContextDefaultCompletionType="<c-n>"
 
 " UltiSnips
 "let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<s-tab>"
 
 " CtrlP
@@ -350,7 +352,7 @@ function! Spaces()
     silent! %s/\s\+$//   " Remove trailing spaces
     norm! `p
 endfunction
-command! -bar Spaces call Spaces() 
+command! -bar Spaces call Spaces()
 
 " Disable cursorline in inactive splits
 augroup CursorLine

@@ -267,6 +267,27 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#buffer_min_count=2
 let g:airline_powerline_fonts=1
 let g:airline_theme="powerlineish"
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c'],
+    \ [ 'x', 'y', 'warning', 'z' ]
+    \ ]
+
+" TODO schöner machen...
+"let let g:airline_section_z = ''
 
 " Gundo
 let g:gundo_close_on_revert=1

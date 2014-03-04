@@ -137,7 +137,7 @@ noremap <down> 2<c-w>-
 noremap <left> 3<c-w><
 noremap <right> 3<c-w>>
 
-" surround current char with spaces
+" Surround current char with spaces
 noremap S i <esc>2li <esc>h
 
 " Folding
@@ -155,18 +155,18 @@ nnoremap k gk
 vnoremap < <gv
 vnoremap > >gv
 
-" splits
+" Splits
 nnoremap <leader>sv :vsplit<CR>
 nnoremap <leader>sh :split<CR>
 
-"Use Q for formatting the current paragraph (or selection)
+" Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q mpgqap`p
 
-" Make Y consistent with C and D.  See :help Y.
+" Make Y consistent with C and D
 nnoremap Y y$
 
-" fugitive maps
+" Fugitive maps
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gd :Gdiff<CR>

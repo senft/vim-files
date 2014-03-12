@@ -1,16 +1,27 @@
+" vim:fdm=marker
+
+" Pathogen {{{
+
 let g:pathogen_disabled = []
 
-set encoding=utf-8
-
-" ----------------------------------------------------------------------------
-" Pathogen
-" ----------------------------------------------------------------------------
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
+" }}}
+" Options {{{
+
 " ----------------------------------------------------------------------------
-" moving around, searching and patterns
+" Syntax highlighting
+" ----------------------------------------------------------------------------
+syntax on
+filetype plugin on
+filetype plugin indent on
+
+color molokai
+
+" ----------------------------------------------------------------------------
+" Searching
 " ----------------------------------------------------------------------------
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
@@ -18,45 +29,40 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
 " ----------------------------------------------------------------------------
-" displaying text
+" Tabs and indenting
 " ----------------------------------------------------------------------------
-set number                      " display line numbers
-set relativenumber              " display relative line numbers
-set nowrap
+set expandtab
+set tabstop=4                   " a tab is 4 spaces
+set shiftwidth=4
+set softtabstop=4
+set smartindent
 
 " ----------------------------------------------------------------------------
-" syntax, highlighting and spelling
+" UI
 " ----------------------------------------------------------------------------
-syntax on
-filetype plugin on
-filetype plugin indent on
+set laststatus=2				" always display statusbar
+set ruler                       " show the cursor position all the time
+set showcmd                     " display incomplete commands
+
+set showmode
+set hidden
+
+set previewheight=20			" maximum height for preview window
+set pumheight=20                " Limit popup menu height
+
+set wildmenu                    " visual autocomplete for command menu
+set completeopt=menu,longest,menuone
 
 set cursorline					" highlight the screen line of the cursor
 
-color molokai
+set number                      " display line numbers
+set relativenumber              " display relative line numbers
+set nowrap
+set so=10                       " Keep cursor away from edges of screen.
 
-" ----------------------------------------------------------------------------
-" multiple windows
-" ----------------------------------------------------------------------------
-set laststatus=2				" always display statusbar
-set previewheight=20			" maximum height for preview window
-set hidden
-
-" ----------------------------------------------------------------------------
-" terminal
-" ----------------------------------------------------------------------------
-set ttyfast
-
-if has('unnamedplus')
-    set clipboard=unnamedplus
-else
-    set clipboard=unnamed
-endif
-
-" ----------------------------------------------------------------------------
-" using the mouse
-" ----------------------------------------------------------------------------
 set mouse=nicr					" mouse click does not enter visual mode
+
+set ttyfast
 
 " ----------------------------------------------------------------------------
 " GUI
@@ -68,46 +74,35 @@ set guioptions-=m				" remove menu bar
 set guifont=Tamzen\ 9
 
 " ----------------------------------------------------------------------------
-" printing
+" Clipboard
 " ----------------------------------------------------------------------------
+if has('unnamedplus')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed
+endif
 
 " ----------------------------------------------------------------------------
-" messages and info
+" Folding
 " ----------------------------------------------------------------------------
-set ruler                       " show the cursor position all the time
-set showcmd                     " display incomplete commands
-set showmode
-
-set pumheight=20                " Limit popup menu height
+"set nofoldenable				" disable folding
+"set foldnestmax=3
 
 " ----------------------------------------------------------------------------
-" selecting text
+" Files
 " ----------------------------------------------------------------------------
+set encoding=utf-8
+set nobackup                    " do not keep a backup file, use versions instead
+set nowritebackup
+set modeline                    " use vim-directives in files
+set noswapfile                  " disable swap file
+set undofile
+set undodir=~/.vimundo
+"set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
 
-" ----------------------------------------------------------------------------
-" editing text
-" ----------------------------------------------------------------------------
-set wildmenu                    " visual autocomplete for command menu
-set completeopt=menu,longest,menuone
+" }}}
+" Mappings {{{
 
-" ----------------------------------------------------------------------------
-" tabs and indenting
-" ----------------------------------------------------------------------------
-set expandtab
-set tabstop=4                   " a tab is 4 spaces
-set shiftwidth=4
-set softtabstop=4
-set smartindent
-
-" ----------------------------------------------------------------------------
-" folding
-" ----------------------------------------------------------------------------
-set nofoldenable				" disable folding
-set foldnestmax=3
-
-" ----------------------------------------------------------------------------
-" mapping
-" ----------------------------------------------------------------------------
 let mapleader=","
 
 " indent code
@@ -185,28 +180,8 @@ nnoremap <C-g> :CtrlPFunky<CR>
 
 imap jj <Esc>
 
-" ----------------------------------------------------------------------------
-" reading and writing files
-" ----------------------------------------------------------------------------
-set nobackup                    " do not keep a backup file, use versions instead
-set nowritebackup
-set modeline                    " use vim-directives in files
-
-" ----------------------------------------------------------------------------
-" the swap file
-" ----------------------------------------------------------------------------
-set noswapfile                  " disable swap file
-
-" ----------------------------------------------------------------------------
-" command line editing
-" ----------------------------------------------------------------------------
-set undofile
-set undodir=~/.vimundo
-"set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
-
-" ----------------------------------------------------------------------------
-" Plugin settings
-" ----------------------------------------------------------------------------
+" }}}
+" Plugin settings {{{
 
 " Tagbar
 let g:tagbar_autoclose=1
@@ -297,9 +272,9 @@ let g:gundo_preview_height=40
 " easymotion
 let g:EasyMotion_leader_key = '<leader>'
 
-" ----------------------------------------------------------------------------
-" Misc
-" ----------------------------------------------------------------------------
+" }}}
+" Commands & Autocommands {{{
+
 "  Keep vim from changing the window position when switching buffers
 if v:version >= 700
     au BufLeave * let b:winview=winsaveview()
@@ -309,63 +284,8 @@ endif
 " use :W to force saving a file
 com! W :w !sudo tee %
 
-au BufRead,BufNewFile *.md set filetype=markdown
-
 " Restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-" Keep cursor away from edges of screen.
-set so=10
-
-" Auto highlight current word when idle
-" http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
-" http://stackoverflow.com/a/1552193
-function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-    augroup end
-    setl updatetime=500
-    echo 'Highlight current word: on'
-    return 1
-  endif
-endfunction
-nnoremap <leader>hw :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-
-" Ranger as a filechooser
-function! RangeChooser()
-    let temp = tempname()
-" The option "--choosefiles" was added in ranger 1.5.1. Use the next line
-" with ranger 1.4.2 through 1.5.0 instead.
-"exec 'silent !ranger --choosefile=' . shellescape(temp)
-    exec 'silent !ranger --choosefiles=' . shellescape(temp)
-    if !filereadable(temp)
-" Nothing to read.
-        return
-    endif
-    let names = readfile(temp)
-    if empty(names)
-" Nothing to open.
-        return
-    endif
-" Edit the first item.
-    exec 'edit ' . fnameescape(names[0])
-" Add any remaning items to the arg list/buffer list.
-    for name in names[1:]
-        exec 'argadd ' . fnameescape(name)
-    endfor
-    :redraw!
-endfunction
-command! -bar RangerChooser call RangeChooser()
-nnoremap <F3> :<C-U>RangerChooser<CR>
 
 function! Spaces()
     norm! mp
@@ -373,13 +293,6 @@ function! Spaces()
     silent! %s/\s\+$//   " Remove trailing spaces
     norm! `p
 endfunction
-command! -bar Spaces call Spaces()
+com! -bar Spaces call Spaces()
 
-" Disable cursorline in inactive splits
-augroup CursorLine
-    au!
-    au VimEnter * setlocal cursorline
-    au WinEnter * setlocal cursorline
-    au BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-augroup END
+" }}}

@@ -217,6 +217,7 @@ let g:SuperTabContextDefaultCompletionType="<c-n>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<s-tab>"
+let g:UltiSnipsEditSplit="horizontal"
 
 " CtrlP
 let g:ctrlp_clear_cache_on_exit=0

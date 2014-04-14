@@ -1,17 +1,17 @@
 if has("gui_running")
-    set background=light
-    set nonu
-    set laststatus=0
+    setlocal background=light
+    setlocal nonu
+    setlocal laststatus=0
     colorscheme default
-    set foldcolumn=12
-    set linespace=8
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-    set tw=80
+    setlocal foldcolumn=12
+    setlocal linespace=8
+    setlocal guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+    setlocal tw=80
 
-    set nonumber
-    set norelativenumber
+    setlocal nonumber
+    setlocal norelativenumber
 
-    set so=999
+    setlocal so=999
 
     hi FoldColumn guibg=white
     hi Normal guibg=gray95
@@ -41,3 +41,13 @@ if has("gui_running")
     ":nnoremap j jzz
     ":nnoremap k kzz
 endif
+
+" fold region for headings
+syn region mkdHeaderFold
+    \ start="^\s*\z(#\+\)"
+    \ skip="^\s*\z1#\+"
+    \ end="^\(\s*#\)\@="
+    \ fold contains=TOP
+
+syn sync fromstart
+setlocal foldmethod=syntax

@@ -1,19 +1,19 @@
-set nocursorline
+setlocal nocursorline
 
-set formatoptions=tcq
-set textwidth=95
+setlocal formatoptions=tcq
+setlocal textwidth=95
 
-set spell
-set spelllang=en_us
+setlocal spell
+setlocal spelllang=en_us
 syntax spell notoplevel
 
 "noremap <leader>r :!pdflatex "%"<CR>
 "noremap <leader>v :!xdg-open "%:r.pdf"&<CR><CR>
 
-noremap <leader>r :Latexmk<CR>
-noremap <leader>v :LatexView<CR>
+noremap <buffer> <leader>r :Latexmk<CR>
+noremap <buffer> <leader>v :LatexView<CR>
 
-noremap <c-g> :LatexTOC<CR>
+noremap <buffer> <c-g> :LatexTOC<CR>
 
 " add ability to surround with tex command to surround.vim
 "let g:surround_{char2nr('c')} = "\\\1command\1{\r}"

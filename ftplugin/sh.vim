@@ -1,1 +1,1 @@
-map <F5> :w<CR>:!bash "%"<CR>
+map <buffer> <leader>r :w<CR>:!bash "%"<CR>

@@ -1,10 +1,10 @@
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set nosmartindent
-set textwidth=79
-set colorcolumn=80
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal expandtab
+setlocal nosmartindent
+setlocal textwidth=79
+setlocal colorcolumn=80
 
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
 let g:syntastic_python_flake8_args = '--ignore=E501'

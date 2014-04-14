@@ -19,6 +19,7 @@ filetype plugin on
 filetype plugin indent on
 
 color molokai
+highlight LineNR ctermbg=233 ctermfg=238
 
 " ----------------------------------------------------------------------------
 " Searching
@@ -40,27 +41,27 @@ set smartindent
 " ----------------------------------------------------------------------------
 " UI
 " ----------------------------------------------------------------------------
-set laststatus=2				" always display statusbar
+set laststatus=2                " always display statusbar
 set ruler                       " show the cursor position all the time
 set showcmd                     " display incomplete commands
 
 set showmode
 set hidden
 
-set previewheight=20			" maximum height for preview window
+set previewheight=20            " maximum height for preview window
 set pumheight=20                " Limit popup menu height
 
 set wildmenu                    " visual autocomplete for command menu
 set completeopt=menu,longest,menuone
 
-set cursorline					" highlight the screen line of the cursor
+set cursorline                    " highlight the screen line of the cursor
 
 set number                      " display line numbers
 set relativenumber              " display relative line numbers
-set nowrap
-set so=10                       " Keep cursor away from edges of screen.
+"set nowrap
+"set so=10                       " Keep cursor away from edges of screen.
 
-set mouse=nicr					" mouse click does not enter visual mode
+set mouse=nicr                    " mouse click does not enter visual mode
 
 set ttyfast
 
@@ -70,7 +71,7 @@ set ttyfast
 set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
-set guioptions-=m				" remove menu bar
+set guioptions-=m                " remove menu bar
 set guifont=Tamzen\ 9
 
 " ----------------------------------------------------------------------------
@@ -85,8 +86,8 @@ endif
 " ----------------------------------------------------------------------------
 " Folding
 " ----------------------------------------------------------------------------
-"set nofoldenable				" disable folding
-"set foldnestmax=3
+"set nofoldenable                " disable folding
+set foldnestmax=2
 
 " ----------------------------------------------------------------------------
 " Files
@@ -162,11 +163,13 @@ nmap Q mpgqap`p
 nnoremap Y y$
 
 " Fugitive maps
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gd :Gdiff<CR>
-noremap <Leader>gw :Gwrite<CR>
-noremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
 
 " Toggle search highlighting
 nnoremap <Leader><Space> :noh<CR>
@@ -175,10 +178,19 @@ nmap <F3> :NERDTreeToggle<CR>
 
 nnoremap <Leader>u :GundoToggle<CR>
 
-nnoremap <C-t> :CtrlPBuffer<CR>
 nnoremap <C-g> :CtrlPFunky<CR>
 
 imap jj <Esc>
+
+noremap <Leader>a :Ack!<cr>
+noremap <Leader>A :Ack
+
+nnoremap <C-q> :bd<CR>
+
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterRevertHunk
 
 " }}}
 " Plugin settings {{{
@@ -213,17 +225,19 @@ let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabContextDefaultCompletionType="<c-n>"
 
 " UltiSnips
-"let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<s-tab>"
 let g:UltiSnipsEditSplit="horizontal"
 
 " CtrlP
+let g:ctrlp_open_multiple_files = 'ij'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_custom_ignore={
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(png|jpg|gif|jpeg|pdf|so|dll|class|pyc)$',
+    \ 'file': '\v\.(png|jpg|gif|jpeg|pdf|so|dll|class|pyc|o)$',
     \ }
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_show_hidden = 1
@@ -262,8 +276,7 @@ let g:airline#extensions#default#layout = [
     \ [ 'x', 'y', 'warning', 'z' ]
     \ ]
 
-" TODO schöner machen...
-"let let g:airline_section_z = ''
+let g:airline_section_z = '%{g:airline_symbols.linenr} %l/%L :%3c'
 
 " Gundo
 let g:gundo_close_on_revert=1
@@ -299,5 +312,17 @@ function! Spaces()
     norm! `p
 endfunction
 com! -bar Spaces call Spaces()
+
+" Automatically load and save folds
+"au BufWinLeave *.* mkview
+"au BufWinEnter *.* silent loadview
+"au BufWinLeave .* mkview
+"au BufWinEnter .* silent loadview
+
+"au BufWinLeave * mkview
+"au BufWinEnter * silent loadview
+
+au bufunload * silent mkview
+au bufread * silent loadview
 
 " }}}

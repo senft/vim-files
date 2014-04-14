@@ -30,10 +30,6 @@
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
 	ignore = dirty
-[submodule "bundle/clang_complete"]
-	path = bundle/clang_complete
-	url = https://github.com/Rip-Rip/clang_complete.git
-	ignore = dirty
 [submodule "bundle/molokai"]
 	path = bundle/molokai
 	url = https://github.com/tomasr/molokai.git
@@ -69,6 +65,7 @@
 [submodule "bundle/vim-easymotion"]
 	path = bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
+	ignore = dirty
 [submodule "bundle/Latex-Box"]
 	path = bundle/Latex-Box
 	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git
@@ -76,3 +73,7 @@
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+	ignore = dirty
+[submodule "bundle/YouCompleteMe"]
+	path = bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git

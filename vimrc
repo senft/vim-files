@@ -271,7 +271,11 @@ let g:gundo_width=60
 let g:gundo_preview_height=40
 
 " easymotion
-let g:EasyMotion_leader_key = '<leader>'
+"let g:EasyMotion_leader_key = '<leader>'
+
+" YouCompleteMe
+let g:ycm_extra_conf_globlist = ['~/Code/*']
+let g:ycm_enable_diagnostic_signs = 0
 
 " }}}
 " Commands & Autocommands {{{

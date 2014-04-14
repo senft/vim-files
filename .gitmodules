@@ -72,9 +72,7 @@
 [submodule "bundle/Latex-Box"]
 	path = bundle/Latex-Box
 	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git
-[submodule "bundle/vim-signature"]
-    path = bundle/vim-signature
-    url = https://github.com/kshenoy/vim-signature.git
+	ignore = dirty
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git

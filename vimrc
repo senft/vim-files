@@ -179,6 +179,7 @@ nmap <F3> :NERDTreeToggle<CR>
 nnoremap <Leader>u :GundoToggle<CR>
 
 nnoremap <C-g> :CtrlPFunky<CR>
+nnoremap <C-t> :CtrlPBuffer<CR>
 
 imap jj <Esc>
 
@@ -233,7 +234,7 @@ let g:UltiSnipsEditSplit="horizontal"
 
 " CtrlP
 let g:ctrlp_open_multiple_files = 'ij'
-let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_custom_ignore={
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -289,6 +290,7 @@ let g:gundo_preview_height=40
 " YouCompleteMe
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_always_populate_location_list = 1
 
 " }}}
 " Commands & Autocommands {{{

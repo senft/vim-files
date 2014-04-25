@@ -292,6 +292,10 @@ let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 1
 
+" vimux
+let g:VimuxOrientation = "v"
+let g:VimuxHeight = "40"
+
 " }}}
 " Commands & Autocommands {{{
 

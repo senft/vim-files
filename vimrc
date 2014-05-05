@@ -20,6 +20,8 @@ filetype plugin indent on
 
 color molokai
 highlight LineNR ctermbg=233 ctermfg=238
+" Don't display a tilde as LineNumber for empty lines
+highlight NonText ctermfg=233
 
 " ----------------------------------------------------------------------------
 " Searching
@@ -54,14 +56,15 @@ set pumheight=20                " Limit popup menu height
 set wildmenu                    " visual autocomplete for command menu
 set completeopt=menu,longest,menuone
 
-set cursorline                    " highlight the screen line of the cursor
+set cursorline                  " highlight the screen line of the cursor
 
-set number                      " display line numbers
-set relativenumber              " display relative line numbers
+"set number                      " display line numbers
+"set relativenumber              " display relative line numbers
+
 "set nowrap
-"set so=10                       " Keep cursor away from edges of screen.
+set so=1                        " Keep cursor away from edges of screen.
 
-set mouse=nicr                    " mouse click does not enter visual mode
+set mouse=nicr                  " mouse click does not enter visual mode
 
 set ttyfast
 
@@ -125,7 +128,7 @@ nnoremap <C-h> <C-w>h
 noremap <silent> H :bp<CR>
 noremap <silent> L :bn<CR>
 
-nnoremap <c-s> :w<CR>
+nnoremap <leader>w :w<CR>
 
 " Resize Windows with arrow keys
 noremap <up> 2<c-w>+

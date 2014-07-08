@@ -7,29 +7,23 @@ setlocal spell
 setlocal spelllang=en_us
 syntax spell notoplevel
 
-"noremap <leader>r :!pdflatex "%"<CR>
-"noremap <leader>v :!xdg-open "%:r.pdf"&<CR><CR>
-
 noremap <buffer> <leader>r :Latexmk<CR>
+noremap <buffer> <leader>R :Latexmk!<CR>
 noremap <buffer> <leader>v :LatexView<CR>
 
-noremap <buffer> <c-g> :LatexTOC<CR>
+noremap <buffer> <leader>ls :LatexmkStatus<CR>
+noremap <buffer> <leader>lx :LatexmkStop<CR>
+noremap <buffer> <leader>lc :LatexmkClean<CR>
+noremap <buffer> <leader>le :LatexmkErrors<CR>
 
-" add ability to surround with tex command to surround.vim
-"let g:surround_{char2nr('c')} = "\\\1command\1{\r}"
-
-"nnoremap <C-b> ysiwc textbf<CR>
-"nnoremap <C-e> ysiwc emph<CR>
-"nnoremap <C-t> ysiwc texttt<CR>
-"vnoremap <C-b> Sc textbf<CR>
-"vnoremap <C-e> Sc emph<CR>
-"vnoremap <C-t> Sc texttt<CR>
+noremap <buffer> <c-g> :LatexTOCToggle<CR>
 
 " let g:SuperTabDefaultCompletionType="<c-x><c-o>"
 
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_split_width = 40
 let g:LatexBox_Folding=1
+let g:LatexBox_fold_envs=1 " dont fold envs only sections
 
 imap ]] <Plug>LatexCloseCurEnv
 imap <buffer> [[     \begin{

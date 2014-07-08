@@ -58,7 +58,7 @@ set completeopt=menu,longest,menuone
 
 set cursorline                  " highlight the screen line of the cursor
 
-"set number                      " display line numbers
+set number                       " display line numbers
 "set relativenumber              " display relative line numbers
 
 "set nowrap
@@ -147,8 +147,8 @@ vnoremap <space> zf
 nnoremap j gj
 nnoremap k gk
 
-"nnoremap n nzz
-"nnoremap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
 
 " Reselect visual block after indent
 vnoremap < <gv
@@ -177,6 +177,7 @@ nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
 " Toggle search highlighting
 nnoremap <Leader><Space> :noh<CR>
 
+nmap <F4> :TagbarToggle<CR>
 nmap <F3> :NERDTreeToggle<CR>
 
 nnoremap <Leader>u :GundoToggle<CR>
@@ -206,10 +207,6 @@ map <Leader>vi :VimuxInspectRunner<CR>
 " }}}
 " Plugin settings {{{
 
-" Tagbar
-let g:tagbar_autoclose=1
-let g:tagbar_autofocus=1
-
 " Syntastic
 let g:syntastic_disabled_filetypes=['scala']
 let g:syntastic_enable_signs=1
@@ -224,6 +221,10 @@ let g:syntastic_style_warning_symbol = '≈'
 highlight clear SignColumn
 highlight SyntasticErrorSign ctermbg=none ctermfg=161 cterm=bold
 highlight SyntasticWarningSign ctermbg=none
+
+" Tagbar
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus=1
 
 " NERDTree
 let NERDTreeQuitOnOpen=1
@@ -339,7 +340,13 @@ com! -bar Spaces call Spaces()
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
 
-au bufunload * silent mkview
-au bufread * silent loadview
+"au bufunload * silent mkview
+"au bufread * silent loadview
+
+au bufunload .* silent mkview
+au bufread .* silent loadview
+
+au bufunload *.* silent mkview
+au bufread *.* silent loadview
 
 " }}}

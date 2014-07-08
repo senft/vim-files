@@ -5,7 +5,7 @@ if has("gui_running")
     colorscheme default
     setlocal foldcolumn=12
     setlocal linespace=8
-    setlocal guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+    setlocal guifont=Inconsolata\ Medium\ 12
     setlocal tw=80
 
     setlocal nonumber
@@ -37,9 +37,6 @@ if has("gui_running")
     "	let g:markdown_fullscreen = 1
     "	:silent !i3-msg fullscreen
     "endif
-
-    ":nnoremap j jzz
-    ":nnoremap k kzz
 endif
 
 " fold region for headings

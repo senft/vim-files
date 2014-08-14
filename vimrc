@@ -55,6 +55,7 @@ set pumheight=20                " Limit popup menu height
 
 set wildmenu                    " visual autocomplete for command menu
 set completeopt=menu,longest,menuone
+set omnifunc=syntaxcomplete#Complete
 
 set cursorline                  " highlight the screen line of the cursor
 

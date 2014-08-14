@@ -7,6 +7,10 @@ setlocal spell
 setlocal spelllang=en_us
 syntax spell notoplevel
 
+let g:ycm_semantic_triggers = {
+\  'tex'  : ['{', '\'],
+\ }
+
 noremap <buffer> <leader>r :Latexmk<CR>
 noremap <buffer> <leader>R :Latexmk!<CR>
 noremap <buffer> <leader>v :LatexView<CR>
@@ -31,3 +35,5 @@ imap <buffer> ]]     <Plug>LatexCloseCurEnv
 nmap <buffer> <F5>   <Plug>LatexChangeEnv
 vmap <buffer> <F6>   <Plug>LatexEnvWrapSelection
 vmap <buffer> <F7>   <Plug>LatexWrapSelection
+
+imap <buffer> <F8>   begin<c-j>

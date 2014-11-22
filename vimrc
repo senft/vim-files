@@ -190,6 +190,7 @@ nnoremap <Leader>u :GundoToggle<CR>
 
 nnoremap <C-g> :CtrlPFunky<CR>
 nnoremap <C-t> :CtrlPBuffer<CR>
+nnoremap <C-m> :CtrlPMark<CR>
 
 imap jj <Esc>
 
@@ -356,3 +357,4 @@ au bufunload *.* silent mkview
 au bufread *.* silent loadview
 
 " }}}
+"

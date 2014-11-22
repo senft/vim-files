@@ -18,9 +18,10 @@ noremap <buffer> <leader>v :LatexView<CR>
 noremap <buffer> <leader>ls :LatexmkStatus<CR>
 noremap <buffer> <leader>lx :LatexmkStop<CR>
 noremap <buffer> <leader>lc :LatexmkClean<CR>
-noremap <buffer> <leader>le :LatexmkErrors<CR>
+noremap <buffer> <leader>le :LatexErrors<CR>
 
 noremap <buffer> <c-g> :LatexTOCToggle<CR>
+noremap <F4> :LatexTOCToggle<CR>
 
 " let g:SuperTabDefaultCompletionType="<c-x><c-o>"
 

@@ -115,6 +115,9 @@ set undodir=~/.vimundo
 
 let mapleader=","
 
+" Dont insert newline when accepting completion with <enter>
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+
 " indent code
 nnoremap <leader>i gg=G<C-o><C-o>
 

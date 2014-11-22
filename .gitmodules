@@ -10,10 +10,6 @@
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 	ignore = dirty
-[submodule "bundle/autoclose"]
-	path = bundle/autoclose
-	url = https://github.com/Townk/vim-autoclose.git
-	ignore = dirty
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
@@ -93,3 +89,8 @@
 [submodule "bundle/ctrlp-mark"]
 	path = bundle/ctrlp-mark
 	url = https://github.com/mattn/ctrlp-mark.git
+	ignore = dirty
+[submodule "bundle/delimitMate"]
+	path = bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+	ignore = dirty

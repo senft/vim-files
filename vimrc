@@ -18,10 +18,15 @@ syntax on
 filetype plugin on
 filetype plugin indent on
 
-color molokai
-highlight LineNR ctermbg=233 ctermfg=238
-" Don't display a tilde as LineNumber for empty lines
-highlight NonText ctermfg=233
+color badwolf
+"highlight LineNR ctermbg=233 ctermfg=238
+"" Don't display a tilde as LineNumber for empty lines
+"highlight NonText ctermfg=233
+
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88
 
 " ----------------------------------------------------------------------------
 " Searching

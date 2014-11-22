@@ -327,9 +327,6 @@ endif
 " use :W to force saving a file
 com! W :w !sudo tee %
 
-" Restore cursor position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
 function! Spaces()
     norm! mp
     silent! %s/\t/    /g " Replace tabs with spaces
@@ -339,22 +336,11 @@ endfunction
 com! -bar Spaces call Spaces()
 
 " Automatically load and save folds
-"au BufWinLeave *.* mkview
-"au BufWinEnter *.* silent loadview
-"au BufWinLeave .* mkview
-"au BufWinEnter .* silent loadview
+au BufWinLeave ?* silent! mkview
+au BufWinEnter ?* silent! loadview
 
-"au BufWinLeave * mkview
-"au BufWinEnter * silent loadview
-
-"au bufunload * silent mkview
-"au bufread * silent loadview
-
-au bufunload .* silent mkview
-au bufread .* silent loadview
-
-au bufunload *.* silent mkview
-au bufread *.* silent loadview
+" Restore cursor position
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " }}}
 "

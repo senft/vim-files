@@ -19,14 +19,14 @@ filetype plugin on
 filetype plugin indent on
 
 color badwolf
-"highlight LineNR ctermbg=233 ctermfg=238
-"" Don't display a tilde as LineNumber for empty lines
-"highlight NonText ctermfg=233
 
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88
+" Don't display a tilde as LineNumber for empty lines
+highlight NonText ctermfg=233
+
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 " ----------------------------------------------------------------------------
 " Searching
@@ -73,6 +73,9 @@ set so=1                        " Keep cursor away from edges of screen.
 set mouse=nicr                  " mouse click does not enter visual mode
 
 set ttyfast
+
+set splitbelow
+set splitright
 
 " ----------------------------------------------------------------------------
 " GUI
@@ -256,7 +259,6 @@ let g:UltiSnipsEditSplit="horizontal"
 
 " CtrlP
 let g:ctrlp_open_multiple_files = 'ij'
-"let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_custom_ignore={
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',

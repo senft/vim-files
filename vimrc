@@ -347,5 +347,7 @@ au BufWinEnter ?* silent! loadview
 " Restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+
 " }}}
 "

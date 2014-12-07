@@ -94,3 +94,6 @@
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 	ignore = dirty
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git

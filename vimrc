@@ -67,7 +67,7 @@ set cursorline                  " highlight the screen line of the cursor
 set number                       " display line numbers
 "set relativenumber              " display relative line numbers
 
-"set nowrap
+set wrap
 set so=1                        " Keep cursor away from edges of screen.
 
 set mouse=nicr                  " mouse click does not enter visual mode
@@ -196,7 +196,7 @@ nnoremap <Leader>u :GundoToggle<CR>
 
 nnoremap <C-g> :CtrlPFunky<CR>
 nnoremap <C-t> :CtrlPBuffer<CR>
-nnoremap <C-m> :CtrlPMark<CR>
+nnoremap <C-k> :CtrlPMark<CR>
 
 imap jj <Esc>
 

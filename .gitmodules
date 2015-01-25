@@ -74,10 +74,6 @@
 	path = bundle/vimux
 	url = https://github.com/benmills/vimux.git
 	ignore = dirty
-[submodule "bundle/vim-scala"]
-	path = bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
-	ignore = dirty
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar

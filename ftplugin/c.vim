@@ -8,7 +8,6 @@ let c_no_comment_fold = 1
 "setlocal makeprg=clang\ %\ -o\ %:r
 
 nnoremap <buffer> <leader>r :make<CR>
-" nnoremap <buffer> <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <buffer> <leader>d :YcmCompleter GoTo<CR>
 
 "let g:syntastic_cpp_config_file = '.clang_complete'

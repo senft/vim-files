@@ -267,9 +267,8 @@ let g:ctrlp_custom_ignore={
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_show_hidden = 1
 
-" Minibufexpl
-let g:miniBufExplTabWrap=1
-let g:miniBufExplStatusLineText=""
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
 
 " Gitgutter
 let g:gitgutter_enabled=1
@@ -308,9 +307,6 @@ let g:gundo_close_on_revert=1
 let g:gundo_width=60
 let g:gundo_preview_height=40
 
-" easymotion
-"let g:EasyMotion_leader_key = '<leader>'
-
 " YouCompleteMe
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs = 0
@@ -339,13 +335,6 @@ function! Spaces()
     norm! `p
 endfunction
 com! -bar Spaces call Spaces()
-
-" Automatically load and save folds
-au BufWinLeave ?* silent! mkview
-au BufWinEnter ?* silent! loadview
-
-" Restore cursor position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 

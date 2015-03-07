@@ -18,15 +18,11 @@ syntax on
 filetype plugin on
 filetype plugin indent on
 
-color badwolf
+let g:hybrid_use_Xresources = 1
+color hybrid
 
 " Don't display a tilde as LineNumber for empty lines
 highlight NonText ctermfg=233
-
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 " ----------------------------------------------------------------------------
 " Searching

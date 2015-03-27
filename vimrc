@@ -2,7 +2,7 @@
 
 " Pathogen {{{
 
-let g:pathogen_disabled = ["supertab"]
+let g:pathogen_disabled = []
 
 filetype off
 call pathogen#infect()
@@ -335,4 +335,3 @@ com! -bar Spaces call Spaces()
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
 " }}}
-"

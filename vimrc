@@ -276,7 +276,8 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#buffer_min_count=2
 let g:airline_powerline_fonts=1
-let g:airline_theme="powerlineish"
+let g:airline_inactive_collapse=1
+" let g:airline_theme="powerlineish"
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
@@ -291,8 +292,9 @@ let g:airline_mode_map = {
     \ '' : 'S',
     \ }
 
+    "\ [ 'a', 'b', 'c'], " don't show mode
 let g:airline#extensions#default#layout = [
-    \ [ 'a', 'b', 'c'],
+    \ [ 'b', 'c'],
     \ [ 'x', 'y', 'warning', 'z' ]
     \ ]
 

@@ -80,7 +80,7 @@ set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
 set guioptions-=m                " remove menu bar
-set guifont=Tamzen\ 9
+set guifont=Inconsolata\ for\ Powerline\ 10
 
 " ----------------------------------------------------------------------------
 " Clipboard

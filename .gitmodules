@@ -42,10 +42,6 @@
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
 	ignore = dirty
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = https://github.com/sjl/gundo.vim.git
-	ignore = dirty
 [submodule "bundle/UltiSnips"]
 	path = bundle/UltiSnips
 	url = https://github.com/SirVer/ultisnips.git

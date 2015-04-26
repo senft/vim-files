@@ -300,19 +300,11 @@ let g:airline#extensions#default#layout = [
 
 let g:airline_section_z = '%{g:airline_symbols.linenr} %l/%L :%3c'
 
-" Gundo
-let g:gundo_close_on_revert=1
-let g:gundo_width=60
-let g:gundo_preview_height=40
-
 " YouCompleteMe
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 1
 
-" vimux
-let g:VimuxOrientation = "v"
-let g:VimuxHeight = "40"
 
 " }}}
 " Commands & Autocommands {{{
@@ -334,6 +326,11 @@ function! Spaces()
 endfunction
 com! -bar Spaces call Spaces()
 
-autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+autocmd FileType c,cpp,java setlocal commentstring=//\ %s
+
+" "Custom" filetpes
+au BufRead,BufNewFile *.md setlocal filetype=markdown
+au BufRead,BufNewFile *.ned	setlocal filetype=ned
+au BufRead,BufNewFile *.msg	setlocal filetype=ned
 
 " }}}

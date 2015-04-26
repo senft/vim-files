@@ -305,6 +305,8 @@ let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 1
 
+" ack.vim
+let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case"
 
 " }}}
 " Commands & Autocommands {{{

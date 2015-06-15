@@ -192,8 +192,10 @@ nnoremap <Leader>u :GundoToggle<CR>
 
 nnoremap <C-g> :CtrlPFunky<CR>
 nnoremap <C-t> :CtrlPBuffer<CR>
-nnoremap <C-k> :CtrlPMark<CR>
+nnoremap <C-m> :CtrlPMark<CR>
 
+" Exit insert mode with jk/
+imap jk <Esc>
 imap jj <Esc>
 
 noremap <Leader>a :Ack!<cr>
@@ -222,9 +224,10 @@ let g:syntastic_enable_signs=1
 let g:syntastic_check_on_open=0
 let g:syntastic_loc_list_height=5
 let g:syntastic_auto_loc_list= 2 " When set to 2 the error window will be automatically closed when no errors are detected, but not opened automatically
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_error_symbol='✘'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = '☢'
+" let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_style_warning_symbol = '≈'
 
 highlight clear SignColumn
@@ -238,13 +241,6 @@ let g:tagbar_autofocus=1
 " NERDTree
 let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.egg-info$']
-
-" Supertab
-let g:SuperTabClosePreviewOnPopupClose=1
-let g:SuperTabLongestHighlight=1
-let g:SuperTabClosePreviewOnPopupClose=1
-let g:SuperTabDefaultCompletionType="context"
-let g:SuperTabContextDefaultCompletionType="<c-n>"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -277,7 +273,6 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#buffer_min_count=2
 let g:airline_powerline_fonts=1
 let g:airline_inactive_collapse=1
-" let g:airline_theme="powerlineish"
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
@@ -336,7 +331,5 @@ autocmd FileType c,cpp,java setlocal commentstring=//\ %s
 
 " "Custom" filetpes
 au BufRead,BufNewFile *.md setlocal filetype=markdown
-au BufRead,BufNewFile *.ned	setlocal filetype=ned
-au BufRead,BufNewFile *.msg	setlocal filetype=ned
 
 " }}}

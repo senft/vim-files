@@ -201,6 +201,8 @@ imap jj <Esc>
 noremap <Leader>a :Ack!<cr>
 noremap <Leader>A :Ack
 
+noremap <Leader>t :Ack! todo<cr>
+
 nnoremap <C-q> :bd<CR>
 
 nmap ]h <Plug>GitGutterNextHunk

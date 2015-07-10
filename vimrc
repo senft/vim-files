@@ -2,7 +2,7 @@
 
 " Pathogen {{{
 
-let g:pathogen_disabled = []
+let g:pathogen_disabled = ['nerdtree']
 
 filetype off
 call pathogen#infect()
@@ -86,7 +86,7 @@ set guifont=Inconsolata\ for\ Powerline\ 10
 " Clipboard
 " ----------------------------------------------------------------------------
 if has('unnamedplus')
-    set clipboard=unnamedplus
+    set clipboard=unnamed,unnamedplus
 else
     set clipboard=unnamed
 endif
@@ -162,6 +162,10 @@ nnoremap N Nzz
 vnoremap < <gv
 vnoremap > >gv
 
+" Reselect visual block after increment/decrement
+vnoremap <c-a> <c-a>gv
+vnoremap <c-x> <c-x>gv
+
 " Splits
 nnoremap <leader>sv :vsplit<CR>
 nnoremap <leader>sh :split<CR>
@@ -186,7 +190,8 @@ nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
 nnoremap <Leader><Space> :noh<CR>
 
 nmap <F4> :TagbarToggle<CR>
-nmap <F3> :NERDTreeToggle<CR>
+" nmap <F3> :NERDTreeToggle<CR>
+nmap <F3> :Lexplore<CR>
 
 nnoremap <Leader>u :GundoToggle<CR>
 

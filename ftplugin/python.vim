@@ -10,5 +10,5 @@ set nowrap
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
 let g:syntastic_python_flake8_args = '--ignore=E501'
 
-iab true True
-iab false False
+iab <buffer> true True
+iab <buffer> false False

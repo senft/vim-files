@@ -217,6 +217,10 @@ map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vx :VimuxInterruptRunner<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
 
+" incsearch.vim (incrementally highlights all pattern matches)
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+
 " }}}
 " Plugin settings {{{
 

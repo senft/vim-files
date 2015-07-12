@@ -1,12 +1,33 @@
 " vim:fdm=marker
 
-" Pathogen {{{
+" vim-plug {{{
+call plug#begin('~/.vim/plugged')
 
-let g:pathogen_disabled = ['nerdtree']
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'kien/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
+Plug 'mileszs/ack.vim'
+Plug 'bling/vim-airline'
+Plug 'SirVer/ultisnips'
+Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
+Plug 'honza/vim-snippets'
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.sh --clang-completer --system-libclang' }
+Plug 'benmills/vimux'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/ctrlp-mark', { 'on': 'CtrlPMark' }
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-commentary'
+Plug 'kopischke/vim-stay'
+Plug 'tpope/vim-repeat'
+Plug 'w0ng/vim-hybrid'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'haya14busa/incsearch.vim'
 
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
+call plug#end()
 
 " }}}
 " Options {{{
@@ -311,9 +332,9 @@ let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 1
 
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_add_preview_to_completeopt = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
 
 " ack.vim
 let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case"

@@ -5,20 +5,16 @@ if has("gui_running")
     setlocal nonu
     setlocal noru
     setlocal laststatus=0
-    setlocal noshowmode 
+    setlocal noshowmode
     colorscheme default
+    setlocal nonumber
+    setlocal norelativenumber
 
     " set foldcolum so that the text is centered, get width with :set columns
     setlocal foldcolumn=12
     setlocal linespace=7
-    "setlocal guifont=Inconsolata\ Medium\ 12
     setlocal guifont=Source\ Code\ Pro\ for\ Powerline\ Light\ 10
     setlocal tw=80
-
-    setlocal nonumber
-    setlocal norelativenumber
-
-    " setlocal so=999
 
     hi FoldColumn guibg=white guifg=white
     hi Normal guibg=white
@@ -40,19 +36,17 @@ if has("gui_running")
     hi Cursor guibg=#15abdd
     hi Search  guibg=wheat
     hi MatchParen gui=bold guibg=wheat
-
-    "if !exists('g:markdown_fullscreen')
-    "    let g:markdown_fullscreen = 1
-    "    :silent !i3-msg fullscreen
-    "endif
 endif
 
-" fold region for headings
-syn region mkdHeaderFold
-    \ start="^\s*\z(#\+\)"
-    \ skip="^\s*\z1#\+"
-    \ end="^\(\s*#\)\@="
-    \ fold contains=TOP
+let g:markdown_fold_style = 'nested'
 
-syn sync fromstart
-setlocal foldmethod=syntax
+" " fold region for headings
+" syn region mkdHeaderFold
+"     \ start="^\s*\z(#\+\)"
+"     \ skip="^\s*\z1#\+"
+"     \ end="^\(\s*#\)\@="
+"     \ fold contains=TOP
+"
+" syn sync fromstart
+" setlocal foldmethod=syntax
+

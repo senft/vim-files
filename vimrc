@@ -214,20 +214,18 @@ nmap <F4> :TagbarToggle<CR>
 " nmap <F3> :NERDTreeToggle<CR>
 nmap <F3> :Lexplore<CR>
 
-nnoremap <Leader>u :GundoToggle<CR>
-
 nnoremap <C-g> :CtrlPFunky<CR>
 nnoremap <C-t> :CtrlPBuffer<CR>
-nnoremap <C-m> :CtrlPMark<CR>
+" nnoremap <C-m> :CtrlPMark<CR>
 
-" Exit insert mode with jk/
+" Exit insert mode with jk
 imap jk <Esc>
-imap jj <Esc>
 
 noremap <Leader>a :Ack!<cr>
 noremap <Leader>A :Ack
 
 noremap <Leader>t :Ack! todo<cr>
+noremap <Leader>T :Ack! todo %<cr>
 
 nnoremap <C-q> :bd<CR>
 

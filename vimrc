@@ -1,12 +1,12 @@
 " vim:fdm=marker
 
-" vim-plug {{{
+" Plugins {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
 Plug 'mileszs/ack.vim'

@@ -357,8 +357,6 @@ function! Spaces()
 endfunction
 com! -bar Spaces call Spaces()
 
-autocmd FileType c,cpp,java setlocal commentstring=//\ %s
-
 " "Custom" filetpes
 au BufRead,BufNewFile *.md setlocal filetype=markdown
 

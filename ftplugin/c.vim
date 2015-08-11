@@ -1,3 +1,5 @@
+setlocal commentstring=//\ %s
+
 setlocal foldnestmax=1			" Only fold 1 level (e.g. only functions)
 setlocal foldmethod=syntax
 setlocal tw=100

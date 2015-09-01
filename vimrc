@@ -15,7 +15,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
 Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.sh --clang-completer --system-libclang' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.py --clang-completer --system-libclang --system-boost' }
 Plug 'benmills/vimux'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/ctrlp-mark', { 'on': 'CtrlPMark' }

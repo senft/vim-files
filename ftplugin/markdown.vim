@@ -1,5 +1,6 @@
 setlocal spell
 
+" Distraction-less GUI mode
 if has("gui_running")
     setlocal background=light
     setlocal nonu
@@ -38,15 +39,42 @@ if has("gui_running")
     hi MatchParen gui=bold guibg=wheat
 endif
 
-let g:markdown_fold_style = 'nested'
+" Make selection bold
+vmap ,fb S*gvS*
 
-" " fold region for headings
-" syn region mkdHeaderFold
-"     \ start="^\s*\z(#\+\)"
-"     \ skip="^\s*\z1#\+"
-"     \ end="^\(\s*#\)\@="
-"     \ fold contains=TOP
-"
-" syn sync fromstart
-" setlocal foldmethod=syntax
+" Make word unter cursor bold
+map ,fb viwS*gvS*
 
+" taken from https://gist.github.com/sjl/1038710
+func! Foldexpr_markdown(lnum)
+    let l1 = getline(a:lnum)
+
+    if l1 =~ '^\s*$'
+        " ignore empty lines
+        return '='
+    endif
+
+    let l2 = getline(a:lnum+1)
+
+    if  l2 =~ '^==\+\s*'
+        " next line is underlined (level 1)
+        return '>1'
+    elseif l2 =~ '^--\+\s*'
+        " next line is underlined (level 2)
+        return '>2'
+    elseif l1 =~ '^#'
+        " current line starts with hashes
+        return '>'.matchend(l1, '^#\+')
+    elseif a:lnum == 1
+        " fold any 'preamble'
+        return '>1'
+    else
+        " keep previous foldlevel
+        return '='
+    endif
+endfunc
+setlocal foldexpr=Foldexpr_markdown(v:lnum)
+setlocal foldmethod=expr
+setlocal foldenable
+" setlocal foldlevel=0
+" setlocal foldcolumn=0

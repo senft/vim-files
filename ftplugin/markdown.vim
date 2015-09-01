@@ -37,16 +37,3 @@ if has("gui_running")
     hi Search  guibg=wheat
     hi MatchParen gui=bold guibg=wheat
 endif
-
-let g:markdown_fold_style = 'nested'
-
-" " fold region for headings
-" syn region mkdHeaderFold
-"     \ start="^\s*\z(#\+\)"
-"     \ skip="^\s*\z1#\+"
-"     \ end="^\(\s*#\)\@="
-"     \ fold contains=TOP
-"
-" syn sync fromstart
-" setlocal foldmethod=syntax
-

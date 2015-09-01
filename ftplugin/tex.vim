@@ -5,6 +5,8 @@ setlocal spell
 setlocal spelllang=en_us
 syntax spell notoplevel
 
+let g:tex_comment_nospell= 1
+
 let g:ycm_semantic_triggers = {
 \  'tex'  : ['{', '\', ':'],
 \ }

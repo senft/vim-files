@@ -26,6 +26,7 @@ Plug 'tpope/vim-repeat'
 Plug 'w0ng/vim-hybrid'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'haya14busa/incsearch.vim'
+Plug 'unblevable/quick-scope'
 
 call plug#end()
 
@@ -176,6 +177,9 @@ vnoremap <space> zf
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
 nnoremap n nzz
 nnoremap N Nzz
 
@@ -211,7 +215,6 @@ nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
 nnoremap <Leader><Space> :noh<CR>
 
 nmap <F4> :TagbarToggle<CR>
-" nmap <F3> :NERDTreeToggle<CR>
 nmap <F3> :Lexplore<CR>
 
 nnoremap <C-g> :CtrlPFunky<CR>
@@ -222,7 +225,7 @@ nnoremap <C-t> :CtrlPBuffer<CR>
 imap jk <Esc>
 
 noremap <Leader>a :Ack!<cr>
-noremap <Leader>A :Ack
+noremap <Leader>A :Ack 
 
 noremap <Leader>t :Ack! todo<cr>
 noremap <Leader>T :Ack! todo %<cr>
@@ -249,7 +252,6 @@ map ?  <Plug>(incsearch-backward)
 " Plugin settings {{{
 
 " Syntastic
-let g:syntastic_disabled_filetypes=['scala']
 let g:syntastic_enable_signs=1
 let g:syntastic_check_on_open=0
 let g:syntastic_loc_list_height=5
@@ -257,7 +259,6 @@ let g:syntastic_auto_loc_list= 2 " When set to 2 the error window will be automa
 let g:syntastic_error_symbol='✘'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '☢'
-" let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_style_warning_symbol = '≈'
 
 highlight clear SignColumn
@@ -356,8 +357,6 @@ function! Spaces()
     norm! `p
 endfunction
 com! -bar Spaces call Spaces()
-
-autocmd FileType c,cpp,java setlocal commentstring=//\ %s
 
 " "Custom" filetpes
 au BufRead,BufNewFile *.md setlocal filetype=markdown

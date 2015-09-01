@@ -12,3 +12,6 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 
 iab <buffer> true True
 iab <buffer> false False
+
+setlocal foldmethod=indent
+setlocal foldnestmax=1

@@ -26,6 +26,7 @@ Plug 'tpope/vim-repeat'
 Plug 'w0ng/vim-hybrid'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'haya14busa/incsearch.vim'
+Plug 'unblevable/quick-scope'
 
 call plug#end()
 

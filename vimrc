@@ -3,30 +3,40 @@
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
+" Git
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
-Plug 'mileszs/ack.vim'
+Plug 'scrooloose/syntastic'
+
+" Look
 Plug 'bling/vim-airline'
-Plug 'SirVer/ultisnips'
-Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
-Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
-Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.py --clang-completer --system-libclang --system-boost' }
-Plug 'benmills/vimux'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/ctrlp-mark', { 'on': 'CtrlPMark' }
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-commentary'
-Plug 'kopischke/vim-stay'
-Plug 'tpope/vim-repeat'
 Plug 'w0ng/vim-hybrid'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'haya14busa/incsearch.vim'
 Plug 'unblevable/quick-scope'
+
+" Text editing
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Interface
+Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+Plug 'benmills/vimux'
+Plug 'majutsushi/tagbar'
+Plug 'kopischke/vim-stay'
+Plug 'mileszs/ack.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
+" Plug 'mattn/ctrlp-mark', { 'on': 'CtrlPMark' }
+
+" Language specific
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.py --clang-completer --system-libclang --system-boost' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 call plug#end()
 
@@ -214,15 +224,16 @@ nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
 " Toggle search highlighting
 nnoremap <Leader><Space> :noh<CR>
 
+" Exit insert mode with jk
+imap jk <Esc>
+
 nmap <F4> :TagbarToggle<CR>
 nmap <F3> :Lexplore<CR>
 
-nnoremap <C-g> :CtrlPFunky<CR>
-nnoremap <C-t> :CtrlPBuffer<CR>
+" nnoremap <C-g> :CtrlPFunky<CR>
+" nnoremap <C-t> :CtrlPBuffer<CR>
 " nnoremap <C-m> :CtrlPMark<CR>
-
-" Exit insert mode with jk
-imap jk <Esc>
+nnoremap <C-p> :FZF<CR>
 
 noremap <Leader>a :Ack!<cr>
 noremap <Leader>A :Ack 
@@ -360,5 +371,26 @@ com! -bar Spaces call Spaces()
 
 " "Custom" filetpes
 au BufRead,BufNewFile *.md setlocal filetype=markdown
+
+" Fuzzy search (and jump to) lines in current buffer
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let b = bufnr('%')
+  return map(getbufline(b, 0, "$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val ')
+endfunction
+
+command! FZFLines call fzf#run({
+\   'source':  <sid>buffer_lines(),
+\   'sink':    function('<sid>line_handler'),
+\   'options': '--extended --nth=3..',
+\   'down':    '60%'
+\})
+nnoremap <c-g> :FZFLines<CR>
 
 " }}}

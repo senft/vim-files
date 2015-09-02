@@ -8,35 +8,31 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 
-" Look
-Plug 'bling/vim-airline'
-Plug 'w0ng/vim-hybrid'
-Plug 'haya14busa/incsearch.vim'
-Plug 'unblevable/quick-scope'
-
-" Text editing
+" UI
 Plug 'tpope/vim-surround'
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" Interface
-Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
-Plug 'benmills/vimux'
-Plug 'majutsushi/tagbar'
-Plug 'kopischke/vim-stay'
-Plug 'mileszs/ack.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
 " Plug 'mattn/ctrlp-mark', { 'on': 'CtrlPMark' }
+Plug 'mileszs/ack.vim'
+Plug 'bling/vim-airline'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'benmills/vimux'
+Plug 'majutsushi/tagbar'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-commentary'
+Plug 'kopischke/vim-stay'
+Plug 'tpope/vim-repeat'
+Plug 'w0ng/vim-hybrid'
+Plug 'haya14busa/incsearch.vim'
+Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+Plug 'unblevable/quick-scope'
 
 " Language specific
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.py --clang-completer --system-libclang --system-boost' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.sh --clang-completer --system-libclang' }
 
 call plug#end()
 
@@ -176,9 +172,6 @@ noremap <down> 2<c-w>-
 noremap <left> 3<c-w><
 noremap <right> 3<c-w>>
 
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
-
 " Surround current char with spaces
 noremap S i <esc>2li <esc>h
 
@@ -190,7 +183,9 @@ vnoremap <space> zf
 nnoremap j gj
 nnoremap k gk
 
-" Center search results
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
 nnoremap n nzz
 nnoremap N Nzz
 
@@ -202,25 +197,28 @@ vnoremap > >gv
 vnoremap <c-a> <c-a>gv
 vnoremap <c-x> <c-x>gv
 
-" Open splits
+" Splits
 nnoremap <leader>sv :vsplit<CR>
 nnoremap <leader>sh :split<CR>
 
-" Close buffer
-nnoremap <C-q> :bd<CR>
-
-" Format the current paragraph (or selection)
+" Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q mpgqap`p
 
-" Make Y consistent with C and D (copy until end of line)
+" Make Y consistent with C and D
 nnoremap Y y$
+
+" Fugitive maps
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
 
 " Toggle search highlighting
 nnoremap <Leader><Space> :noh<CR>
-
-" Exit insert mode with jk
-imap jk <Esc>
 
 nmap <F4> :TagbarToggle<CR>
 nmap <F3> :Lexplore<CR>
@@ -230,19 +228,16 @@ nmap <F3> :Lexplore<CR>
 " nnoremap <C-m> :CtrlPMark<CR>
 nnoremap <C-p> :FZF<CR>
 
+" Exit insert mode with jk
+imap jk <Esc>
+
 noremap <Leader>a :Ack!<cr>
-noremap <Leader>A :Ack<space>
+noremap <Leader>A :Ack 
 
 noremap <Leader>t :Ack! todo<cr>
 noremap <Leader>T :Ack! todo %<cr>
 
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <C-q> :bd<CR>
 
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk

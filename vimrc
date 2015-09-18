@@ -35,7 +35,7 @@ Plug 'mileszs/ack.vim'
 " Language specific
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python'], 'do': './install.py --clang-completer --system-libclang --system-boost' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python', 'tex'], 'do': './install.py --clang-completer --system-libclang --system-boost' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 call plug#end()

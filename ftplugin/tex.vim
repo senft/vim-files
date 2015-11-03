@@ -8,8 +8,12 @@ syntax spell notoplevel
 let g:tex_comment_nospell= 1
 
 let g:ycm_semantic_triggers = {
-\  'tex'  : ['{', '\', ':'],
+\  'tex'  : ['{', ':'],
 \ }
+
+" let g:ycm_semantic_triggers = {
+" \  'tex'  : ['{', '\', ':'],
+" \ }
 
 noremap <buffer> <leader>r :Latexmk<CR>
 noremap <buffer> <leader>R :Latexmk!<CR>
@@ -37,3 +41,6 @@ vmap <buffer> <F6>   <Plug>LatexEnvWrapSelection
 vmap <buffer> <F7>   <Plug>LatexWrapSelection
 
 imap <buffer> <F8>   begin<c-j>
+
+iab <buffer> ... \ldots
+iab <buffer> -> $\rightarrow$

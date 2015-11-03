@@ -51,6 +51,7 @@ filetype plugin on
 filetype plugin indent on
 
 let g:hybrid_use_Xresources = 1
+set background=dark
 color hybrid
 
 " Don't display a tilde as LineNumber for empty lines
@@ -333,9 +334,9 @@ let g:airline_mode_map = {
     \ '' : 'S',
     \ }
 
-    "\ [ 'a', 'b', 'c'], " don't show mode
+    " \ [ 'b', 'c'],
 let g:airline#extensions#default#layout = [
-    \ [ 'b', 'c'],
+    \ [ 'c'],
     \ [ 'x', 'y', 'warning', 'z' ]
     \ ]
 
@@ -352,6 +353,9 @@ let g:ycm_always_populate_location_list = 1
 
 " ack.vim
 let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case"
+
+" quick-scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " }}}
 " Commands & Autocommands {{{

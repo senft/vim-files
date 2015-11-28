@@ -312,6 +312,10 @@ let g:ctrlp_funky_syntax_highlight = 1
 " Gitgutter
 let g:gitgutter_enabled=1
 let g:gitgutter_eager=0
+let g:gitgutter_sign_added = "＋"
+let g:gitgutter_sign_removed = "－"
+let g:gitgutter_sign_modified = "＊"
+
 highlight SignColumn ctermbg=233
 
 " Airline

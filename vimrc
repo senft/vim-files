@@ -28,9 +28,7 @@ Plug 'benmills/vimux'
 Plug 'majutsushi/tagbar'
 Plug 'kopischke/vim-stay'
 Plug 'mileszs/ack.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }
-" Plug 'mattn/ctrlp-mark', { 'on': 'CtrlPMark' }
+Plug 'francoiscabrol/ranger.vim'
 
 " Language specific
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
@@ -227,7 +225,8 @@ nnoremap <Leader><Space> :noh<CR>
 imap jk <Esc>
 
 nmap <F4> :TagbarToggle<CR>
-nmap <F3> :Lexplore<CR>
+nmap <F3> :call OpenRanger()<CR>
+
 
 " nnoremap <C-g> :CtrlPFunky<CR>
 " nnoremap <C-t> :CtrlPBuffer<CR>

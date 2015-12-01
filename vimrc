@@ -11,7 +11,7 @@ Plug 'scrooloose/syntastic'
 " Look
 Plug 'bling/vim-airline'
 Plug 'w0ng/vim-hybrid'
-Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)'] }
 Plug 'unblevable/quick-scope'
 
 " Text editing
@@ -312,6 +312,9 @@ let g:ctrlp_funky_syntax_highlight = 1
 " Gitgutter
 let g:gitgutter_enabled=1
 let g:gitgutter_eager=0
+let g:gitgutter_realtime=0
+" let g:gitgutter_highlight_lines=0
+
 let g:gitgutter_sign_added = "＋"
 let g:gitgutter_sign_removed = "－"
 let g:gitgutter_sign_modified = "＊"
@@ -322,6 +325,7 @@ highlight SignColumn ctermbg=233
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#buffer_min_count=2
+let g:airline_theme='hybridline'
 let g:airline_powerline_fonts=1
 let g:airline_inactive_collapse=1
 let g:airline_mode_map = {

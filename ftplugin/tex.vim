@@ -1,6 +1,7 @@
 setlocal nocursorline
 setlocal formatoptions=tcq
-setlocal textwidth=95
+setlocal textwidth=120
+setlocal colorcolumn=120
 setlocal spell
 setlocal spelllang=en_us
 syntax spell notoplevel

@@ -1,5 +1,3 @@
-" vim:fdm=marker
-
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
@@ -114,7 +112,7 @@ set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
 set guioptions-=m                " remove menu bar
-set guifont=Inconsolata\ for\ Powerline\ 10
+set guifont=Source\ Code\ Pro\ for\ Powerline\ 8
 
 " ----------------------------------------------------------------------------
 " Clipboard
@@ -251,6 +249,7 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
@@ -409,3 +408,4 @@ command! FZFLines call fzf#run({
 nnoremap <c-g> :FZFLines<CR>
 
 " }}}
+" vim:fdm=marker

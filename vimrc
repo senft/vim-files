@@ -21,7 +21,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Interface
-Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'benmills/vimux'
 Plug 'majutsushi/tagbar'
 Plug 'kopischke/vim-stay'
@@ -112,7 +113,7 @@ set guioptions-=T               " remove toolbar
 set guioptions-=r               " remove right-hand scroll-bar
 set guioptions-=e               " remove tabbar
 set guioptions-=m                " remove menu bar
-set guifont=Source\ Code\ Pro\ for\ Powerline\ 8
+set guifont=Source\ Code\ Pro\ for\ Powerline\ 9
 
 " ----------------------------------------------------------------------------
 " Clipboard
@@ -140,127 +141,6 @@ set noswapfile                  " disable swap file
 set undofile
 set undodir=~/.vimundo
 "set wildignore+=*.mp3,*.MP3,*.ogg,*.mp4,*.wav,*.avi,*.AVI,*.wmv,*.m4a,*.mkv,*.png.*.jpg,*.jpeg,*.pdf
-
-" }}}
-" Mappings {{{
-
-let mapleader=","
-
-" Dont insert newline when accepting completion with <enter>
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
-
-" indent code
-nnoremap <leader>i gg=G<C-o><C-o>
-
-" Goto "definition"
-map <Leader>d <C-]>
-
-" Toggle paste mode with F2
-nnoremap <F12> :set invpaste paste?<CR>
-
-" Move between windows with CRTL+{hjkl}
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-
-" Buffer movement
-noremap <silent> H :bp<CR>
-noremap <silent> L :bn<CR>
-
-nnoremap <leader>w :w<CR>
-
-" Resize Windows with arrow keys
-noremap <up> 2<c-w>+
-noremap <down> 2<c-w>-
-noremap <left> 3<c-w><
-noremap <right> 3<c-w>>
-
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
-
-" Surround current char with spaces
-noremap S i <esc>2li <esc>h
-
-" Folding
-nnoremap <space> za
-vnoremap <space> zf
-
-" Improve up/down movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
-
-" Center search results
-nnoremap n nzz
-nnoremap N Nzz
-
-" Reselect visual block after indent
-vnoremap < <gv
-vnoremap > >gv
-
-" Reselect visual block after increment/decrement
-vnoremap <c-a> <c-a>gv
-vnoremap <c-x> <c-x>gv
-
-" Open splits
-nnoremap <leader>sv :vsplit<CR>
-nnoremap <leader>sh :split<CR>
-
-" Close buffer
-nnoremap <C-q> :bd<CR>
-
-" Format the current paragraph (or selection)
-vmap Q gq
-nmap Q mpgqap`p
-
-" Make Y consistent with C and D (copy until end of line)
-nnoremap Y y$
-
-" Toggle search highlighting
-nnoremap <Leader><Space> :noh<CR>
-
-" Exit insert mode with jk
-imap jk <Esc>
-
-nmap <F4> :TagbarToggle<CR>
-nmap <F3> :call OpenRanger()<CR>
-
-
-" nnoremap <C-g> :CtrlPFunky<CR>
-" nnoremap <C-t> :CtrlPBuffer<CR>
-" nnoremap <C-m> :CtrlPMark<CR>
-nnoremap <C-p> :FZF<CR>
-
-noremap <Leader>a :Ack!<cr>
-noremap <Leader>A :Ack<space>
-
-noremap <Leader>t :Ack! todo<cr>
-noremap <Leader>T :Ack! todo %<cr>
-
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
-
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-nmap <Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader>hr <Plug>GitGutterRevertHunk
-nmap <Leader>hp <Plug>GitGutterPreviewHunk
-
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vz :call VimuxZoomRunner()<CR>
-map <Leader>vq :VimuxCloseRunner<CR>
-map <Leader>vx :VimuxInterruptRunner<CR>
-map <Leader>vi :VimuxInspectRunner<CR>
-
-" incsearch.vim (incrementally highlights all pattern matches)
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
 
 " }}}
 " Plugin settings {{{
@@ -386,26 +266,128 @@ com! -bar Spaces call Spaces()
 " "Custom" filetpes
 au BufRead,BufNewFile *.md setlocal filetype=markdown
 
-" Fuzzy search (and jump to) lines in current buffer
-function! s:line_handler(l)
-  let keys = split(a:l, ':\t')
-  exec 'buf' keys[0]
-  exec keys[1]
-  normal! ^zz
-endfunction
+" }}}
+" Mappings {{{
 
-function! s:buffer_lines()
-  let b = bufnr('%')
-  return map(getbufline(b, 0, "$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val ')
-endfunction
+let mapleader=","
 
-command! FZFLines call fzf#run({
-\   'source':  <sid>buffer_lines(),
-\   'sink':    function('<sid>line_handler'),
-\   'options': '--extended --nth=3..',
-\   'down':    '60%'
-\})
-nnoremap <c-g> :FZFLines<CR>
+" Dont insert newline when accepting completion with <enter>
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+
+" indent code
+nnoremap <leader>i gg=G<C-o><C-o>
+
+" Goto "definition"
+map <Leader>d <C-]>
+
+" Toggle paste mode with F2
+nnoremap <F12> :set invpaste paste?<CR>
+
+" Move between windows with CRTL+{hjkl}
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+" Buffer movement
+noremap <silent> H :bp<CR>
+noremap <silent> L :bn<CR>
+
+nnoremap <leader>w :w<CR>
+
+" Resize Windows with arrow keys
+noremap <up> 2<c-w>+
+noremap <down> 2<c-w>-
+noremap <left> 3<c-w><
+noremap <right> 3<c-w>>
+
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+" Surround current char with spaces
+noremap S i <esc>2li <esc>h
+
+" Folding
+nnoremap <space> za
+vnoremap <space> zf
+
+" Improve up/down movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" Center search results
+nnoremap n nzz
+nnoremap N Nzz
+
+" Reselect visual block after indent
+vnoremap < <gv
+vnoremap > >gv
+
+" Reselect visual block after increment/decrement
+vnoremap <c-a> <c-a>gv
+vnoremap <c-x> <c-x>gv
+
+" Open splits
+nnoremap <leader>sv :vsplit<CR>
+nnoremap <leader>sh :split<CR>
+
+" Close buffer
+nnoremap <C-q> :bd<CR>
+
+" Format the current paragraph (or selection)
+vmap Q gq
+nmap Q mpgqap`p
+
+" Make Y consistent with C and D (copy until end of line)
+nnoremap Y y$
+
+" Toggle search highlighting
+nnoremap <Leader><Space> :noh<CR>
+
+" Exit insert mode with jk
+imap jk <Esc>
+
+nmap <F4> :TagbarToggle<CR>
+nmap <F3> :call OpenRanger()<CR>
+
+
+" nnoremap <C-g> :CtrlPFunky<CR>
+" nnoremap <C-t> :CtrlPBuffer<CR>
+" nnoremap <C-m> :CtrlPMark<CR>
+nnoremap <C-p> :FZF<CR>
+nnoremap <C-t> :Buffers<CR>
+nnoremap <C-g> :BLines<CR>
+
+noremap <Leader>a :Ack!<cr>
+noremap <Leader>A :Ack<space>
+
+noremap <Leader>t :Ack! todo<cr>
+noremap <Leader>T :Ack! todo %<cr>
+
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
+
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterRevertHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
+
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vz :call VimuxZoomRunner()<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vx :VimuxInterruptRunner<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+
+" incsearch.vim (incrementally highlights all pattern matches)
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
 
 " }}}
 " vim:fdm=marker

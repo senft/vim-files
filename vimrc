@@ -32,7 +32,7 @@ Plug 'francoiscabrol/ranger.vim'
 " Language specific
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python', 'tex'], 'do': './install.py --clang-completer --system-libclang --system-boost' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python', 'tex'], 'do': 'python2 install.py --clang-completer --system-libclang --system-boost' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 call plug#end()
@@ -47,8 +47,9 @@ syntax on
 filetype plugin on
 filetype plugin indent on
 
-let g:hybrid_use_Xresources = 1
+" let g:hybrid_reduced_contrast = 0
 set background=dark
+" let g:hybrid_custom_term_colors = 1
 color hybrid
 
 " Don't display a tilde as LineNumber for empty lines

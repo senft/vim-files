@@ -28,11 +28,13 @@ noremap <buffer> <leader>le :LatexErrors<CR>
 " noremap <buffer> <c-g> :LatexTOCToggle<CR>
 noremap <F4> :LatexTOCToggle<CR>
 
-let g:LatexBox_custom_indent = 0
+" let g:LatexBox_custom_indent = 0
 let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_split_width = 40
 let g:LatexBox_Folding = 1
 let g:LatexBox_fold_envs = 1 " dont fold envs only sections
+let g:LatexBox_fold_automatic = 0
+let g:LatexBox_fold_preamble = 1
 
 imap ]] <Plug>LatexCloseCurEnv
 imap <buffer> [[     \begin{
@@ -45,3 +47,6 @@ imap <buffer> <F8>   begin<c-j>
 
 iab <buffer> ... \ldots
 iab <buffer> -> $\rightarrow$
+
+map \gq ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>gq//-1<CR>
+omap lp ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>//-1<CR>.<CR>

@@ -7,7 +7,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 
 " Look
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
 Plug 'haya14busa/incsearch.vim', { 'on': ['<Plug>(incsearch-forward)', '<Plug>(incsearch-backward)'] }
 Plug 'unblevable/quick-scope'

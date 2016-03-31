@@ -5,3 +5,4 @@ view/
 vim-support/
 session/
 plugged/
+autoload/plug.vim.old

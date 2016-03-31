@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 
 " Look
 Plug 'vim-airline/vim-airline'
@@ -15,23 +15,25 @@ Plug 'unblevable/quick-scope'
 
 " Text editing
 Plug 'tpope/vim-surround'
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary' ", { 'on': ['<Plug>(CommentaryLine)', '<Plug>(Commentary)'] }
 Plug 'tpope/vim-repeat'
+Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Interface
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'benmills/vimux'
+Plug 'benmills/vimux', { 'on': ['VimuxPromptCommand'] }
 Plug 'majutsushi/tagbar'
 Plug 'kopischke/vim-stay'
-Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim', { 'on': ['Ack'] }
+Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'tpope/vim-obsession'
 
 " Language specific
-Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'] }
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'], 'on': ['A'] }
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python', 'tex'], 'do': 'python2 install.py --clang-completer --system-libclang --system-boost' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -146,6 +148,13 @@ set undodir=~/.vimundo
 
 " }}}
 " Plugin settings {{{
+
+" Always show sign column
+let g:gitgutter_sign_column_always=1
+
+" Neomake
+let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorMsg' }
+let g:neomake_warning_sign = { 'texthl': 'CursorLineNr'}
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -268,6 +277,9 @@ com! -bar Spaces call Spaces()
 " "Custom" filetpes
 au BufRead,BufNewFile *.md setlocal filetype=markdown
 
+" Run neomake on every write
+autocmd! BufWritePost * Neomake
+
 " }}}
 " Mappings {{{
 
@@ -334,7 +346,7 @@ nnoremap <leader>sv :vsplit<CR>
 nnoremap <leader>sh :split<CR>
 
 " Close buffer
-nnoremap <C-q> :bd<CR>
+nnoremap <C-q> :Bclose<CR>
 
 " Format the current paragraph (or selection)
 vmap Q gq

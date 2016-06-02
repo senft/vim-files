@@ -22,6 +22,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Interface
+Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'benmills/vimux', { 'on': ['VimuxPromptCommand'] }
@@ -148,6 +149,9 @@ set undodir=~/.vimundo
 
 " }}}
 " Plugin settings {{{
+
+" Vimwiki
+let g:vimwiki_list = [{'path':'/home/jln/Dropbox/wiki', 'syntax': 'markdown'}]
 
 " Always show sign column
 let g:gitgutter_sign_column_always=1

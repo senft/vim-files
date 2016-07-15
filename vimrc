@@ -284,6 +284,14 @@ au BufRead,BufNewFile *.md setlocal filetype=markdown
 " Run neomake on every write
 autocmd! BufWritePost * Neomake
 
+iab <buffer> -> →
+" iab <buffer> -> ⮕
+" iab <buffer> -> 🡒
+" iab <buffer> -> 🡢
+" iab <buffer> -> 🡪
+" iab <buffer> -> 🡲
+" iab <buffer> -> 🡺
+
 " }}}
 " Mappings {{{
 

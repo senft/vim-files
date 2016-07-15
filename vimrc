@@ -401,7 +401,7 @@ nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader>hr <Plug>GitGutterRevertHunk
+nmap <Leader>hu <Plug>GitGutterUndoHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 map <Leader>vp :VimuxPromptCommand<CR>

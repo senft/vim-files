@@ -376,13 +376,17 @@ imap jk <Esc>
 nmap <F4> :TagbarToggle<CR>
 nmap <F3> :call OpenRanger()<CR>
 
-
-" nnoremap <C-g> :CtrlPFunky<CR>
-" nnoremap <C-t> :CtrlPBuffer<CR>
-" nnoremap <C-m> :CtrlPMark<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-t> :Buffers<CR>
 nnoremap <C-g> :BLines<CR>
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+nnoremap <C-p> :ProjectFiles<CR>
+
 
 noremap <Leader>a :Ack!<cr>
 noremap <Leader>A :Ack<space>

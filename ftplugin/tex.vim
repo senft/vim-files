@@ -1,7 +1,7 @@
 setlocal nocursorline
 setlocal formatoptions=tcq
-setlocal textwidth=120
-setlocal colorcolumn=120
+setlocal textwidth=0
+setlocal colorcolumn=0
 setlocal spell
 setlocal spelllang=en_us
 syntax spell notoplevel
@@ -38,6 +38,8 @@ let g:LatexBox_Folding = 1
 let g:LatexBox_fold_envs = 1 " dont fold envs only sections
 let g:LatexBox_fold_automatic = 1
 let g:LatexBox_fold_preamble = 1
+
+let g:LatexBox_viewer = 'zathura'
 
 imap ]] <Plug>LatexCloseCurEnv
 imap <buffer> [[     \begin{

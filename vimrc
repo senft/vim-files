@@ -248,12 +248,8 @@ let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_always_populate_location_list = 1
 
-" let g:ycm_add_preview_to_completeopt = 1
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_autoclose_preview_window_after_completion = 1
-
-" ack.vim
 let g:ack_default_options = " -s -H --nocolor --nogroup --column --smart-case"
+let $FZF_DEFAULT_COMMAND = 'ack --nocolor -g "."'
 
 " quick-scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

@@ -293,10 +293,13 @@ iab <buffer> -> →
 
 let mapleader=","
 
+" Exit terminal mode
+:tnoremap <Esc> <C-\><C-n>
+
 " Dont insert newline when accepting completion with <enter>
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 
-" indent code
+" Indent code
 nnoremap <leader>i gg=G<C-o><C-o>
 
 " Goto "definition"

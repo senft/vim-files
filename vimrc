@@ -22,7 +22,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Interface
-Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'benmills/vimux', { 'on': ['VimuxPromptCommand'] }
@@ -31,12 +30,10 @@ Plug 'kopischke/vim-stay'
 Plug 'mileszs/ack.vim', { 'on': ['Ack'] }
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'tpope/vim-obsession'
 
 " Language specific
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cpp'], 'on': ['A'] }
-Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': ['latex', 'tex', 'plaintex'] }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python', 'tex'], 'do': 'python2 install.py --clang-completer --system-libclang --system-boost' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'python', 'tex'], 'do': 'python install.py --clang-completer' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 call plug#end()
@@ -293,11 +290,7 @@ iab <buffer> -> →
 
 let mapleader=","
 
-" Exit terminal mode
-:tnoremap <Esc> <C-\><C-n>
-
 " Dont insert newline when accepting completion with <enter>
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 
 " Indent code
 nnoremap <leader>i gg=G<C-o><C-o>
@@ -317,8 +310,6 @@ nnoremap <C-h> <C-w>h
 " Buffer movement
 noremap <silent> H :bp<CR>
 noremap <silent> L :bn<CR>
-
-nnoremap <leader>w :w<CR>
 
 " Resize Windows with arrow keys
 noremap <up> 2<c-w>+
@@ -369,13 +360,9 @@ nnoremap Y y$
 " Toggle search highlighting
 nnoremap <Leader><Space> :noh<CR>
 
-" Exit insert mode with jk
-imap jk <Esc>
-
 nmap <F4> :TagbarToggle<CR>
 nmap <F3> :call OpenRanger()<CR>
 
-nnoremap <C-p> :FZF<CR>
 nnoremap <C-t> :Buffers<CR>
 nnoremap <C-g> :BLines<CR>
 
@@ -385,13 +372,6 @@ endfunction
 
 command! ProjectFiles execute 'Files' s:find_git_root()
 nnoremap <C-p> :ProjectFiles<CR>
-
-
-noremap <Leader>a :Ack!<cr>
-noremap <Leader>A :Ack<space>
-
-noremap <Leader>t :Ack! todo<cr>
-noremap <Leader>T :Ack! todo %<cr>
 
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
@@ -409,10 +389,6 @@ nmap <Leader>hr <Plug>GitGutterUndoHunk
 
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vz :call VimuxZoomRunner()<CR>
-map <Leader>vq :VimuxCloseRunner<CR>
-map <Leader>vx :VimuxInterruptRunner<CR>
-map <Leader>vi :VimuxInspectRunner<CR>
 
 " incsearch.vim (incrementally highlights all pattern matches)
 map /  <Plug>(incsearch-forward)
